@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<a href="home">Main Home Editor</a>
+<br>
+
+<form
+        method="POST"
+        th:object="${mainPage}"
+        enctype="multipart/form-data"
+>
+    <h3>Title: </h3>
+    <input type="text" name="title"
+           th:placeholder="${title}"
+           th:field="*{title}"
+    />
+    <h3>Description</h3>
+    <input type="text" name="description"
+           th:placeholder="${description}"
+           th:field="*{description}"
+    />
+    <h3>Enable Bank Logos: </h3>
+    <input type="checkbox" name="enableBankLogos"
+        th:field="*{enableBankLogos}"
+    />
+    <h3>Outtro Description: </h3>
+    <input type="text" name="outtroDescription"
+           th:placeholder="${outtroDescription}"
+           th:field="*{outtroDescription}"
+    />
+    <button type="submit">Submit</button>
+</form>
+
+
+</body>
+</html>
