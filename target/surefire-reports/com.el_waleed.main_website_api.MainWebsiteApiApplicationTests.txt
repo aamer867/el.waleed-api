@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.el_waleed.main_website_api.MainWebsiteApiApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.960 s -- in com.el_waleed.main_website_api.MainWebsiteApiApplicationTests
