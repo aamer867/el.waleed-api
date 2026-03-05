@@ -8,32 +8,102 @@
 <a href="home">Main Home Editor</a>
 <br>
 
+<h1>Edit Landing Page </h1>
 <form
+        th:action="@{/main-page/landing-page-section}"
         method="POST"
-        th:object="${mainPage}"
-        enctype="multipart/form-data"
+        th:object="${landingPageSection}"
 >
     <h3>Title: </h3>
     <input type="text" name="title"
-           th:placeholder="${title}"
            th:field="*{title}"
     />
-    <h3>Description</h3>
+
+    <h3>Header: </h3>
+    <input type="text"
+           th:field="*{header}"
+    />
+
+    <h3>Description: </h3>
     <input type="text" name="description"
-           th:placeholder="${description}"
            th:field="*{description}"
-    />
-    <h3>Enable Bank Logos: </h3>
-    <input type="checkbox" name="enableBankLogos"
-        th:field="*{enableBankLogos}"
-    />
-    <h3>Outtro Description: </h3>
-    <input type="text" name="outtroDescription"
-           th:placeholder="${outtroDescription}"
-           th:field="*{outtroDescription}"
     />
     <button type="submit">Submit</button>
 </form>
+
+<form
+        th:action="@{/main-page/landing-page-section/update-words}"
+        method="POST"
+        th:object="${landingPageWords}"
+>
+    <h3>Edit the words: </h3>
+    <div th:each="word, iterStat : *{words}">
+        <input
+                type="text"
+                th:field="*{words[__${iterStat.index}__]}"
+        />
+    </div>
+    <button type="submit">Submit</button>
+
+</form>
+
+<h1>Edit Service Section: </h1>
+<form
+        th:action="@{/main-page/service-section}"
+        method="POST"
+        th:object="${serviceSection}"
+>
+    <h3>Title: </h3>
+    <input type="text" name="title"
+           th:field="*{title}"
+    />
+
+    <h3>Header: </h3>
+    <input type="text"
+           th:field="*{header}"
+    />
+
+    <h3>Description: </h3>
+    <input type="text" name="description"
+           th:field="*{description}"
+    />
+    <button type="submit">Submit</button>
+</form>
+
+<h1>Edit Our Clients Section: </h1>
+<form
+        th:action="@{/main-page/our-clients-section}"
+        method="POST"
+        th:object="${ourClientsSection}"
+>
+    <h3>Title: </h3>
+    <input type="text" name="title"
+           th:field="*{title}"
+    />
+    <h3>Header: </h3>
+    <input type="text"
+           th:field="*{header}"
+    />
+    <button type="submit">Submit</button>
+</form>
+
+<h1>Edit Contact Us Section: </h1>
+<form
+        th:action="@{/main-page/contact-us-section}"
+        method="POST"
+        th:object="${contactUsSection}"
+>
+    <h3>Title: </h3>
+    <input type="text" name="title"
+           th:field="*{title}"
+    />
+    <h3>Header: </h3>
+    <input type="text"
+           th:field="*{header}"
+    />
+    <button type="submit">Submit</button>
+</form>
+
 
 
 </body>
