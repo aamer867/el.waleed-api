@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -24,32 +25,28 @@ public class MainPageController {
     private SectionRepository sectionRepository;
     private SubSectionRepository subSectionRepository;
     private List<Section> sections = new ArrayList<>();
-
-    MainPageServices mainPageServices = new MainPageServices();
+    private MainPageServices mainPageServices;
 
     @Autowired
-    public MainPageController(SectionRepository sectionRepository, SubSectionRepository subSectionRepository) {
+    public MainPageController(SectionRepository sectionRepository,
+                              SubSectionRepository subSectionRepository,
+                              MainPageServices mainPageServices) {
         this.sectionRepository = sectionRepository;
         this.subSectionRepository = subSectionRepository;
-        this.mainPageServices.addSubsectionsToEachSection(
-                sectionRepository,
-                subSectionRepository,
-                sections);
+        this.mainPageServices = mainPageServices;
     }
 
     @GetMapping
-    public String mainPage() {
+    public String mainPage(Model model) {
+        this.sections = this.mainPageServices.addSubsectionsToEachSection();
+        model.addAttribute("landingPageWords", mainPageServices.returnLandingPageWords(sections));
+        model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB(sections));
         return "main-page";
     }
 
     @ModelAttribute("landingPageSection")
     public Section getLandingPage() {
         return new Section();
-    }
-
-    @ModelAttribute("landingPageWords")
-    public WordsContent getLandingPageWords() {
-        return mainPageServices.returnLandingPageWords(sections);
     }
 
     @ModelAttribute("serviceSection")

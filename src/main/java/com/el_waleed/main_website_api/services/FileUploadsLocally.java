@@ -26,7 +26,7 @@ public class FileUploadsLocally {
                 .getFileName()
                 .toString();
 
-        Path uploadDir = Paths.get("uploads");
+        Path uploadDir = Paths.get("uploads/images/landing-page-cards/");
 
         Files.createDirectories(uploadDir);
 

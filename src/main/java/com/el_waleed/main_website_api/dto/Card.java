@@ -1,16 +1,19 @@
 package com.el_waleed.main_website_api.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.UUID;
 
 @Data
 public class Card {
-    private MultipartFile imageFile;
     private String title;
+    @JsonProperty("image_url")
+    private String imageUrl;
+    private String header;
     private String description;
-    private UUID id = UUID.randomUUID();
-    private boolean selected;
+    @JsonIgnore
+    private ImageHandler image;
+    @JsonIgnore
+    private boolean visible;
 }
 

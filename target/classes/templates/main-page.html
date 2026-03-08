@@ -8,45 +8,89 @@
 <a href="home">Main Home Editor</a>
 <br>
 
-<h1>Edit Landing Page </h1>
-<form
-        th:action="@{/main-page/landing-page-section}"
-        method="POST"
-        th:object="${landingPageSection}"
->
-    <h3>Title: </h3>
-    <input type="text" name="title"
-           th:field="*{title}"
-    />
-
-    <h3>Header: </h3>
-    <input type="text"
-           th:field="*{header}"
-    />
-
-    <h3>Description: </h3>
-    <input type="text" name="description"
-           th:field="*{description}"
-    />
-    <button type="submit">Submit</button>
-</form>
-
-<form
-        th:action="@{/main-page/landing-page-section/update-words}"
-        method="POST"
-        th:object="${landingPageWords}"
->
-    <h3>Edit the words: </h3>
-    <div th:each="word, iterStat : *{words}">
-        <input
-                type="text"
-                th:field="*{words[__${iterStat.index}__]}"
+<div>
+    <form
+            th:action="@{/main-page/landing-page-section}"
+            method="POST"
+            th:object="${landingPageSection}"
+    >
+        <h2>Edit Landing Page </h2>
+        <h3>Title: </h3>
+        <input type="text" name="title"
+               th:field="*{title}"
         />
-    </div>
-    <button type="submit">Submit</button>
 
-</form>
+        <h3>Header: </h3>
+        <input type="text"
+               th:field="*{header}"
+        />
 
+        <h3>Description: </h3>
+        <input type="text" name="description"
+               th:field="*{description}"
+        />
+        <button type="submit">Submit</button>
+    </form>
+
+    <form
+            th:action="@{/main-page/landing-page-section/update-words}"
+            method="POST"
+            th:object="${landingPageWords}"
+    >
+        <h3>Edit the words: </h3>
+        <div th:each="word, iterStat : *{words}">
+            <input
+                    type="text"
+                    th:field="*{words[__${iterStat.index}__]}"
+            />
+            <input
+                type="checkbox"
+                name="selectedWords"
+                th:value="${word}"
+            />
+            <span>Hide Word</span>
+        </div>
+        <button type="submit" name="action" value="add">Add New Word</button>
+        <button type="submit" name="action" value="submit">Submit</button>
+
+    </form>
+
+    <form
+            th:action="@{/main-page/landing-page-section/update-cards}"
+            method="POST"
+            th:object="${landingPageCards}"
+            enctype="multipart/form-data"
+    >
+        <h3>Edit the Cards:</h3>
+        <div th:each="card, iterStat : *{cards}">
+            <span>Header: </span>
+            <input
+                    type="text"
+                    th:field="*{cards[__${iterStat.index}__].header}"
+            />
+            <span>Description: </span>
+            <input
+                    type="text"
+                    th:field="*{cards[__${iterStat.index}__].description}"
+            />
+            <span>Image Upload: </span>
+            <input
+                    type="file"
+                    th:field="*{cards[__${iterStat.index}__].image.image}"
+            />
+            <input
+                type="checkbox"
+                th:field="*{cards[__${iterStat.index}__].visible}"
+            />
+            <span>Hide Card</span>
+        </div>
+        <button type="submit" name="action" value="add">Add New Card</button>
+        <button type="submit" name="action" value="submit">Submit</button>
+    </form>
+
+
+
+</div>
 <h1>Edit Service Section: </h1>
 <form
         th:action="@{/main-page/service-section}"
