@@ -5,6 +5,8 @@ import com.el_waleed.main_website_api.dto.Card;
 import com.el_waleed.main_website_api.dto.CardsContent;
 import com.el_waleed.main_website_api.dto.ImageHandler;
 import com.el_waleed.main_website_api.dto.SubSection;
+import com.el_waleed.main_website_api.services.FileUpload;
+import com.el_waleed.main_website_api.services.FileUploadGloballyHostinger;
 import com.el_waleed.main_website_api.services.FileUploadsLocally;
 import com.el_waleed.main_website_api.services.MainPageServices;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -68,9 +70,11 @@ public class LandingPageCardsController {
             for (Card card : cardsContent.getCards()) {
                 ImageHandler imageFile = card.getImage();
                 MultipartFile file = imageFile.getImage();
-                FileUploadsLocally fileUploads = new FileUploadsLocally(file);
+                FileUpload fileUploads = new FileUploadGloballyHostinger();
+                fileUploads.setFile(file);
                 try {
-                    fileUploads.uploadFileLocally();
+                    String filePath = fileUploads.uploadFile();
+                    card.setImageUrl(filePath);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

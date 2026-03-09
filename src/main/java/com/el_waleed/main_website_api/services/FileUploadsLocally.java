@@ -9,20 +9,15 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
-public class FileUploadsLocally {
-    private MultipartFile uploadedFile;
+public class FileUploadsLocally extends FileUpload{
 
-    public FileUploadsLocally(MultipartFile uploadedFile) {
-        this.uploadedFile = uploadedFile;
-    }
+    public String uploadFile() throws IOException {
 
-    public void uploadFileLocally() throws IOException {
-
-        if(uploadedFile.isEmpty()) {
+        if(file.isEmpty()) {
             throw new IllegalStateException("You must upload a file");
         }
 
-        String originalFilename = Paths.get(uploadedFile.getOriginalFilename())
+        String originalFilename = Paths.get(file.getOriginalFilename())
                 .getFileName()
                 .toString();
 
@@ -34,9 +29,9 @@ public class FileUploadsLocally {
 
         Path destination = uploadDir.resolve(fileName);
 
-        Files.copy(uploadedFile.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(file.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
 
-
+        return "uploads/images/landing-page-cards/" + fileName;
 
     }
 
