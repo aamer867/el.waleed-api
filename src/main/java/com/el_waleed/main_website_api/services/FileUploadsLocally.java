@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class FileUploadsLocally extends FileUpload{
 
-    public String uploadFile() throws IOException {
+    public String uploadFile(String filePath) throws IOException {
 
         if(file.isEmpty()) {
             throw new IllegalStateException("You must upload a file");

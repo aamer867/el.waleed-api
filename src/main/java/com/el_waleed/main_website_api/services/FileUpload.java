@@ -14,5 +14,5 @@ public abstract class FileUpload {
 
     protected MultipartFile file;
 
-    public abstract String uploadFile() throws IOException;
+    public abstract String uploadFile(String fileName) throws IOException;
 }

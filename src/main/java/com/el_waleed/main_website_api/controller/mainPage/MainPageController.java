@@ -41,6 +41,7 @@ public class MainPageController {
         this.sections = this.mainPageServices.addSubsectionsToEachSection();
         model.addAttribute("landingPageWords", mainPageServices.returnLandingPageWords(sections));
         model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB(sections));
+        model.addAttribute("landingPageBankLogos", mainPageServices.pullBanksLogosFromDB(sections));
         return "main-page";
     }
 

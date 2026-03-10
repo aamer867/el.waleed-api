@@ -88,6 +88,40 @@
         <button type="submit" name="action" value="submit">Submit</button>
     </form>
 
+    <form
+            th:action="@{/main-page/landing-page-section/update-bank-logos}"
+            method="POST"
+            th:object="${landingPageBankLogos}"
+            enctype="multipart/form-data"
+    >
+        <h3>Edit Bank Logos: </h3>
+        <div th:each="bankLogo, iterStat : *{banks}">
+            <span>Bank Name: </span>
+            <input
+                    type="text"
+                    th:field="*{banks[__${iterStat.index}__].name}"
+            />
+
+            <span>Bank Link</span>
+            <input
+                    type="text"
+                    th:field="*{banks[__${iterStat.index}__].bankLink}"
+            />
+            <span>Image Upload: </span>
+            <input
+                    type="file"
+                    th:field="*{banks[__${iterStat.index}__].image.image}"
+            />
+            <input
+                type="checkbox"
+                th:field="*{banks[__${iterStat.index}__].visible}"
+            />
+            <span>Hide Bank</span>
+        </div>
+        <button type="submit" name="action" value="add">Add New Card</button>
+        <button type="submit" name="action" value="submit">Submit</button>
+    </form>
+
 
 
 </div>

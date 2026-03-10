@@ -13,4 +13,6 @@ public class BankData {
     private String bankLink;
     @JsonIgnore
     private ImageHandler image;
+    @JsonIgnore
+    private boolean visible;
 }

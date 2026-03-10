@@ -78,4 +78,18 @@ public class MainPageServices {
         return cardsContent;
     }
 
+    public BanksLogosContent pullBanksLogosFromDB(List<Section> sections) {
+        SubSection banksLogosSubSection = parseSubsectionData("B01", sections).get().getSubSections().get(2);
+        String banksLogos = banksLogosSubSection.getContentJson();
+        ObjectMapper mapper = new ObjectMapper();
+        BanksLogosContent banksLogosContent = new BanksLogosContent();
+        try {
+            String cleanJson = mapper.readValue(banksLogos, String.class);
+            banksLogosContent = mapper.readValue(cleanJson, BanksLogosContent.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return banksLogosContent;
+    }
+
 }

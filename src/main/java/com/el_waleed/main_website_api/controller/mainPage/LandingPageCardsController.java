@@ -73,7 +73,7 @@ public class LandingPageCardsController {
                 FileUpload fileUploads = new FileUploadGloballyHostinger();
                 fileUploads.setFile(file);
                 try {
-                    String filePath = fileUploads.uploadFile();
+                    String filePath = fileUploads.uploadFile("landing-page-cards");
                     card.setImageUrl(filePath);
                 } catch (IOException e) {
                     e.printStackTrace();

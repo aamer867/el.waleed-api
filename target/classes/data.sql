@@ -45,8 +45,23 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
 -- Bank Logos
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C03','B01','bank_logos','IMG',
-     '{ "bank_misr": "/sources/static/images/bank_misr.png", "bank_ahly": "/sources/static/images/bank_ahly.png", "bank_mizrahi": "/sources/static/images/bank_mizrahi.png" }');
-
+     '{"banks":[
+       {
+         "name": "bank_misr",
+         "image_url": "/sources/static/images/bank_misr.png",
+         "link": "https://www.banquemisr.com"
+       },
+       {
+         "name": "bank_ahly",
+         "image_url": "/sources/static/images/bank_ahly.png",
+         "link": "https://www.nbe.com.eg"
+       },
+       {
+         "name": "bank_mizrahi",
+         "image_url": "/sources/static/images/bank_mizrahi.png",
+         "link": "https://www.mizrahi-tefahot.co.il"
+       }
+     ]}');
 -- Mission / Vision / Goals
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C04','B02','vision','CARD',

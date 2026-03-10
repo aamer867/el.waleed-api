@@ -17,7 +17,7 @@ public class FileUploadGloballyHostinger extends FileUpload{
     }
 
     @Override
-    public String uploadFile() throws IOException {
+    public String uploadFile(String fileName) throws IOException {
 
         FTPClient ftpClient = new FTPClient();
 
@@ -28,8 +28,8 @@ public class FileUploadGloballyHostinger extends FileUpload{
             ftpClient.enterLocalPassiveMode();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
             ftpClient.makeDirectory("/public_html/images");
-            ftpClient.makeDirectory("/public_html/images/landing-page-cards");
-            String remotePath = "/public_html/images/landing-page-cards/";
+            ftpClient.makeDirectory("/public_html/images/" + fileName);
+            String remotePath = "/public_html/images//" + fileName + "/";
 
             String filename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
 
