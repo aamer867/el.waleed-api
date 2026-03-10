@@ -1,14 +1,15 @@
+-- SET FOREIGN_KEY_CHECKS=0;
 -- =========================
 -- CLEAR TABLES
 -- =========================
 DELETE FROM subsections;
-DELETE FROM Sections;
-DELETE FROM Pages;
+DELETE FROM sections;
+DELETE FROM pages;
 
 -- =========================
 -- PAGES
 -- =========================
-INSERT INTO Pages (id, title, slug) VALUES
+INSERT INTO pages (id, title, slug) VALUES
                                         ('A01', 'Home', 'home_page'),
                                         ('A02', 'About', 'about_page'),
                                         ('A03', 'Services', 'services_page'),
@@ -18,7 +19,7 @@ INSERT INTO Pages (id, title, slug) VALUES
 -- =========================
 -- SECTIONS
 -- =========================
-INSERT INTO Sections (id, page_id, title) VALUES
+INSERT INTO sections (id, page_id, title) VALUES
                                               ('B01', 'A01', 'landing_page'),
                                               ('B02', 'A01', 'mission_vision_values'),
                                               ('B03', 'A01', 'services_part'),
@@ -101,3 +102,4 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C09','B05','contact_info','INFO',
      '{ "email": "info@yourcompany.com", "address": "123 Business Street, Downtown, Cairo, Egypt", "opening_hours": "Sunday – Thursday, 9:00 AM – 5:00 PM" }');
+-- SET FOREIGN_KEY_CHECKS=1;

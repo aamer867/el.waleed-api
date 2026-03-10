@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Pages (
+CREATE TABLE IF NOT EXISTS pages (
     id VARCHAR(4) NOT NULL,
     title VARCHAR(40) NOT NULL,
     slug VARCHAR(15) NOT NULL,
@@ -28,6 +28,6 @@ CREATE TABLE IF NOT EXISTS subsections (
 );
 
 ALTER TABLE sections
-    ADD FOREIGN KEY (page_id) REFERENCES Pages(id);
+    ADD FOREIGN KEY (page_id) REFERENCES pages(id);
 ALTER TABLE subsections
     ADD FOREIGN KEY (section_id) REFERENCES sections(id);
