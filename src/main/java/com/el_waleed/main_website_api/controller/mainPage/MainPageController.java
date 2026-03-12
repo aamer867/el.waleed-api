@@ -39,10 +39,11 @@ public class MainPageController {
     @GetMapping
     public String mainPage(Model model) {
         this.sections = this.mainPageServices.addSubsectionsToEachSection();
-        model.addAttribute("landingPageWords", mainPageServices.returnLandingPageWords(sections));
+        model.addAttribute("landingPageWords", mainPageServices.pullLandingPageWords(sections));
         model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB(sections));
         model.addAttribute("landingPageBankLogos", mainPageServices.pullBanksLogosFromDB(sections));
-        model.addAttribute("aboutUsSection", mainPageServices.pullCardsServicesFromDB(sections));
+        model.addAttribute("aboutUsSection", mainPageServices.pullCardsAboutUsFromDB(sections));
+        model.addAttribute("serviceSubSection", mainPageServices.pullCardsServicesFromDB(sections));
         return "main-page";
     }
 

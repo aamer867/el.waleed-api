@@ -98,22 +98,22 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C08','B03','services','CARD',
      '{ "cards": [
-         { "img_url": "/resources/static/images/service01.jpg", "header": "Feasibility Studies", "description": "We evaluate business ideas and projects." },
-         { "img_url": "/resources/static/images/service02.jpg", "header": "Tax Advisory", "description": "Strategic tax planning and compliance services." },
-         { "img_url": "/resources/static/images/service03.jpg", "header": "Financial Consulting", "description": "Tailored financial solutions." },
-         { "img_url": "/resources/static/images/service04.jpg", "header": "Audit & Assurance", "description": "Independent audit services." },
-         { "img_url": "/resources/static/images/service05.jpg", "header": "Business Advisory", "description": "Support business transformation." }
+         { "image_url": "/resources/static/images/service01.jpg", "header": "Feasibility Studies", "description": "We evaluate business ideas and projects." },
+         { "image_url": "/resources/static/images/service02.jpg", "header": "Tax Advisory", "description": "Strategic tax planning and compliance services." },
+         { "image_url": "/resources/static/images/service03.jpg", "header": "Financial Consulting", "description": "Tailored financial solutions." },
+         { "image_url": "/resources/static/images/service04.jpg", "header": "Audit & Assurance", "description": "Independent audit services." },
+         { "image_url": "/resources/static/images/service05.jpg", "header": "Business Advisory", "description": "Support business transformation." }
      ]}');
 
 -- Clients Cards
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C09','B04','clients','CARD',
      '{ "cards": [
-         { "img_url": "/resources/static/images/client01.jpg", "header": "Corporate Clients", "description": "Strategic advisory services." },
-         { "img_url": "/resources/static/images/client02.jpg", "header": "SMEs", "description": "Cost-effective solutions." },
-         { "img_url": "/resources/static/images/client03.jpg", "header": "Startups", "description": "From idea to execution." },
-         { "img_url": "/resources/static/images/client04.jpg", "header": "Non-Profit Organizations", "description": "Governance and compliance." },
-         { "img_url": "/resources/static/images/client05.jpg", "header": "International Clients", "description": "Cross-border advisory." }
+         { "image_url": "/resources/static/images/client01.jpg", "header": "Corporate Clients", "description": "Strategic advisory services." },
+         { "image_url": "/resources/static/images/client02.jpg", "header": "SMEs", "description": "Cost-effective solutions." },
+         { "image_url": "/resources/static/images/client03.jpg", "header": "Startups", "description": "From idea to execution." },
+         { "image_url": "/resources/static/images/client04.jpg", "header": "Non-Profit Organizations", "description": "Governance and compliance." },
+         { "image_url": "/resources/static/images/client05.jpg", "header": "International Clients", "description": "Cross-border advisory." }
      ]}');
 
 -- Contact Info

@@ -48,7 +48,7 @@ public class MainPageServices {
         return Optional.empty();
     }
 
-    public WordsContent returnLandingPageWords(List<Section> sections) {
+    public WordsContent pullLandingPageWords(List<Section> sections) {
         SubSection wordsSubSection = parseSubsectionData("B01", sections).get().getSubSections().get(0);
         String words = wordsSubSection.getContentJson();
 
@@ -92,7 +92,7 @@ public class MainPageServices {
         return banksLogosContent;
     }
 
-    public CardsContent pullCardsServicesFromDB(List<Section> sections) {
+    public CardsContent pullCardsAboutUsFromDB(List<Section> sections) {
         SubSection cardsSubSection = parseSubsectionData("B02", sections).get().getSubSections().get(0);
         String cards = cardsSubSection.getContentJson();
         ObjectMapper mapper = new ObjectMapper();
@@ -106,4 +106,17 @@ public class MainPageServices {
         return cardsContent;
     }
 
+    public CardsContent pullCardsServicesFromDB(List<Section> sections) {
+        SubSection cardsSubSection = parseSubsectionData("B03", sections).get().getSubSections().get(0);
+        String cards = cardsSubSection.getContentJson();
+        ObjectMapper mapper = new ObjectMapper();
+        CardsContent cardsContent = new CardsContent();
+        try {
+            String cleanJson = mapper.readValue(cards, String.class);
+            cardsContent = mapper.readValue(cleanJson, CardsContent.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return cardsContent;
+    }
 }
