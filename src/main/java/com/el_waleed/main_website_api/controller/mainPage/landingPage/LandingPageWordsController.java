@@ -1,4 +1,4 @@
-package com.el_waleed.main_website_api.controller.mainPage;
+package com.el_waleed.main_website_api.controller.mainPage.landingPage;
 
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.SubSection;

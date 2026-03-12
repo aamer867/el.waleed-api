@@ -1,4 +1,4 @@
-package com.el_waleed.main_website_api.controller.mainPage;
+package com.el_waleed.main_website_api.controller.mainPage.landingPage;
 
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.Card;
@@ -7,8 +7,6 @@ import com.el_waleed.main_website_api.dto.ImageHandler;
 import com.el_waleed.main_website_api.dto.SubSection;
 import com.el_waleed.main_website_api.services.FileUpload;
 import com.el_waleed.main_website_api.services.FileUploadGloballyHostinger;
-import com.el_waleed.main_website_api.services.FileUploadsLocally;
-import com.el_waleed.main_website_api.services.MainPageServices;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -20,13 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Date;
-import java.util.UUID;
 
 @Controller
 @Slf4j

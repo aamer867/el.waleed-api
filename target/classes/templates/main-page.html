@@ -125,12 +125,42 @@
 
 
 </div>
-<h1>Edit Service Section: </h1>
+<form
+        th:action="@{/main-page/about-us}"
+        method="POST"
+        th:object="${aboutUsSection}"
+        enctype="multipart/form-data"
+>
+    <h1>Edit About Us Section: </h1>
+    <div th:each="card, itersat : *{cards}">
+        <span th:text="${card.title}">Hey, You will not appear :))</span>
+
+        <span>Header: </span>
+        <input
+                type="text"
+                th:field="*{cards[__${itersat.index}__].header}"
+        />
+
+        <span>Description: </span>
+        <input
+                type="text"
+                th:field="*{cards[__${itersat.index}__].description}"
+        />
+
+        <span>Image Upload: </span>
+        <input
+                type="file"
+                th:field="*{cards[__${itersat.index}__].image.image}"
+        />
+    </div>
+    <button type="submit" name="action" value="submit">Submit</button>
+</form>
 <form
         th:action="@{/main-page/service-section}"
         method="POST"
         th:object="${serviceSection}"
 >
+    <h1>Edit Service Section: </h1>
     <h3>Title: </h3>
     <input type="text" name="title"
            th:field="*{title}"

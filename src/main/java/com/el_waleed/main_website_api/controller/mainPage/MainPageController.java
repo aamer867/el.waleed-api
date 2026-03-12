@@ -42,6 +42,7 @@ public class MainPageController {
         model.addAttribute("landingPageWords", mainPageServices.returnLandingPageWords(sections));
         model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB(sections));
         model.addAttribute("landingPageBankLogos", mainPageServices.pullBanksLogosFromDB(sections));
+        model.addAttribute("aboutUsSection", mainPageServices.pullCardsServicesFromDB(sections));
         return "main-page";
     }
 

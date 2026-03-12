@@ -63,22 +63,40 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
          "link": "https://www.mizrahi-tefahot.co.il"
        }
      ]}');
--- Mission / Vision / Goals
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
-    ('C04','B02','vision','CARD',
-     '{ "title": "VISION", "header": "Innovative, empowering, sustainable, inclusive", "description": "Our strong belief in our profession inspires us to build a diverse and robust organization.", "img_url": "/resources/static/images/vision.jpg" }');
-
-INSERT INTO subsections (id, section_id, title, type, data) VALUES
-    ('C05','B02','mission','CARD',
-     '{ "title": "MISSION", "header": "Deliver excellence with integrity", "description": "Our mission is to provide high-quality professional services built on trust and transparency.", "img_url": "/resources/static/images/mission.jpg" }');
-
-INSERT INTO subsections (id, section_id, title, type, data) VALUES
-    ('C06','B02','goals','CARD',
-     '{ "title": "GOALS", "header": "Growth, quality, long-term partnerships", "description": "Our goals focus on continuous improvement and innovation.", "img_url": "/resources/static/images/goals.jpg" }');
+    ('C04','B02','mission_vision_values','CARD',
+     '{
+       "cards": [
+         {
+           "title": "VISION",
+           "header": "Innovative, Empowering, Sustainable, Inclusive",
+           "description": "Our vision is to become a trusted leader in financial advisory services.",
+           "image_url": "/resources/static/images/vision.jpg"
+         },
+         {
+           "title": "MISSION",
+           "header": "Deliver Excellence with Integrity",
+           "description": "Our mission is to provide high-quality professional services built on trust.",
+           "image_url": "/resources/static/images/mission.jpg"
+         },
+         {
+           "title": "VALUES",
+           "header": "Integrity, Professionalism, Commitment, Innovation",
+           "description": "Our values guide everything we do and shape our relationship with clients.",
+           "image_url": "/resources/static/images/values.jpg"
+         },
+         {
+           "title": "GOALS",
+           "header": "Growth, Quality, Long-Term Partnerships",
+           "description": "Our goals focus on continuous improvement and sustainable business growth.",
+           "image_url": "/resources/static/images/goals.jpg"
+         }
+       ]
+     }');
 
 -- Services Cards
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
-    ('C07','B03','services','CARD',
+    ('C08','B03','services','CARD',
      '{ "cards": [
          { "img_url": "/resources/static/images/service01.jpg", "header": "Feasibility Studies", "description": "We evaluate business ideas and projects." },
          { "img_url": "/resources/static/images/service02.jpg", "header": "Tax Advisory", "description": "Strategic tax planning and compliance services." },
@@ -89,7 +107,7 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
 
 -- Clients Cards
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
-    ('C08','B04','clients','CARD',
+    ('C09','B04','clients','CARD',
      '{ "cards": [
          { "img_url": "/resources/static/images/client01.jpg", "header": "Corporate Clients", "description": "Strategic advisory services." },
          { "img_url": "/resources/static/images/client02.jpg", "header": "SMEs", "description": "Cost-effective solutions." },
@@ -100,6 +118,6 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
 
 -- Contact Info
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
-    ('C09','B05','contact_info','INFO',
+    ('C10','B05','contact_info','INFO',
      '{ "email": "info@yourcompany.com", "address": "123 Business Street, Downtown, Cairo, Egypt", "opening_hours": "Sunday – Thursday, 9:00 AM – 5:00 PM" }');
 -- SET FOREIGN_KEY_CHECKS=1;
