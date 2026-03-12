@@ -119,4 +119,18 @@ public class MainPageServices {
         }
         return cardsContent;
     }
+
+    public CardsContent pullCardsClientsFromDB(List<Section> sections) {
+        SubSection cardsSubSection = parseSubsectionData("B04", sections).get().getSubSections().get(0);
+        String cards = cardsSubSection.getContentJson();
+        ObjectMapper mapper = new ObjectMapper();
+        CardsContent cardsContent = new CardsContent();
+        try {
+            String cleanJson = mapper.readValue(cards, String.class);
+            cardsContent = mapper.readValue(cleanJson, CardsContent.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return cardsContent;
+    }
 }

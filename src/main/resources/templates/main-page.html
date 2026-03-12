@@ -213,23 +213,57 @@
 
 </form>
 </div>
-<h1>Edit Our Clients Section: </h1>
-<form
-        th:action="@{/main-page/our-clients-section}"
-        method="POST"
-        th:object="${ourClientsSection}"
->
-    <h3>Title: </h3>
-    <input type="text" name="title"
-           th:field="*{title}"
-    />
-    <h3>Header: </h3>
-    <input type="text"
-           th:field="*{header}"
-    />
-    <button type="submit">Submit</button>
-</form>
+<div>
+    <h1>Edit Our Clients Section: </h1>
+    <form
+            th:action="@{/main-page/our-clients-section}"
+            method="POST"
+            th:object="${ourClientsSection}"
+    >
+        <h3>Title: </h3>
+        <input type="text" name="title"
+               th:field="*{title}"
+        />
+        <h3>Header: </h3>
+        <input type="text"
+               th:field="*{header}"
+        />
+        <button type="submit">Submit</button>
+    </form>
 
+    <form
+            th:action="@{/main-page/update-clients}"
+            method="POST"
+            th:object="${clientsSection}"
+            enctype="multipart/form-data"
+    >
+        <div th:each="client, iterStat : *{cards}">
+            <span>Client Name: </span>
+            <input
+                    type="text"
+                    th:field="*{cards[__${iterStat.index}__].header}"
+            />
+            <span>Clients Respond: </span>
+            <input
+                    type="text"
+                    th:field="*{cards[__${iterStat.index}__].description}"
+            />
+            <span>Image Upload: </span>
+            <input
+                    type="file"
+                    th:field="*{cards[__${iterStat.index}__].image.image}"
+            />
+            <input
+                    type="checkbox"
+                    th:field="*{cards[__${iterStat.index}__].visible}"
+            />
+            <span>Hide Client</span>
+        </div>
+        <button type="submit" name="action" value="add">Add New Client</button>
+        <button type="submit" name="action" value="submit">Submit</button>
+
+    </form>
+</div>
 <h1>Edit Contact Us Section: </h1>
 <form
         th:action="@{/main-page/contact-us-section}"

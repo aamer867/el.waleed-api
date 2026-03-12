@@ -44,6 +44,7 @@ public class MainPageController {
         model.addAttribute("landingPageBankLogos", mainPageServices.pullBanksLogosFromDB(sections));
         model.addAttribute("aboutUsSection", mainPageServices.pullCardsAboutUsFromDB(sections));
         model.addAttribute("serviceSubSection", mainPageServices.pullCardsServicesFromDB(sections));
+        model.addAttribute("clientsSection", mainPageServices.pullCardsClientsFromDB(sections));
         return "main-page";
     }
 
