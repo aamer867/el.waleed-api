@@ -8,7 +8,6 @@ import com.el_waleed.main_website_api.dto.SubSection;
 import com.el_waleed.main_website_api.services.FileUpload;
 import com.el_waleed.main_website_api.services.FileUploadGloballyHostinger;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.io.JsonEOFException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
