@@ -264,24 +264,45 @@
 
     </form>
 </div>
+<div>
 <h1>Edit Contact Us Section: </h1>
-<form
-        th:action="@{/main-page/contact-us-section}"
-        method="POST"
-        th:object="${contactUsSection}"
->
-    <h3>Title: </h3>
-    <input type="text" name="title"
-           th:field="*{title}"
-    />
-    <h3>Header: </h3>
-    <input type="text"
-           th:field="*{header}"
-    />
-    <button type="submit">Submit</button>
-</form>
+    <form
+            th:action="@{/main-page/contact-us-section}"
+            method="POST"
+            th:object="${contactUsSection}"
+    >
+        <h3>Title: </h3>
+        <input type="text" name="title"
+               th:field="*{title}"
+        />
+        <h3>Header: </h3>
+        <input type="text"
+               th:field="*{header}"
+        />
+        <button type="submit">Submit</button>
+    </form>
 
+    <form
+            th:action="@{/main-page/contact-us}"
+            method="POST"
+            th:object="${constactUsSubsection}"
+    >
 
+        <h3>Address: </h3>
+        <input type="text" name="address"
+               th:field="*{address}"
+        />
+        <h3>Phone Number: </h3>
+        <input type="text" name="phoneNumber"
+               th:field="*{phone}"
+        />
+        <h3>Email: </h3>
+        <input type="text" th:field="*{email}">
+        <h3>working Hours: </h3>
+        <input type="text" th:field="*{workingHours}">
+        <button type="submit">Submit</button>
 
+    </form>
+</div>
 </body>
 </html>

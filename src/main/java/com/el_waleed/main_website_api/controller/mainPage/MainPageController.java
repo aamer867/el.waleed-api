@@ -45,6 +45,7 @@ public class MainPageController {
         model.addAttribute("aboutUsSection", mainPageServices.pullCardsAboutUsFromDB(sections));
         model.addAttribute("serviceSubSection", mainPageServices.pullCardsServicesFromDB(sections));
         model.addAttribute("clientsSection", mainPageServices.pullCardsClientsFromDB(sections));
+        model.addAttribute("constactUsSubsection", mainPageServices.pullCardsContactUsFromDB(sections));
         return "main-page";
     }
 

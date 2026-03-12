@@ -119,5 +119,5 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
 -- Contact Info
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C10','B05','contact_info','INFO',
-     '{ "email": "info@yourcompany.com", "address": "123 Business Street, Downtown, Cairo, Egypt", "opening_hours": "Sunday – Thursday, 9:00 AM – 5:00 PM" }');
+     '{ "email": "info@yourcompany.com", "address": "123 Business Street, Downtown, Cairo, Egypt", "opening_hours": "Sunday – Thursday, 9:00 AM – 5:00 PM", "phone": "+1234567890" }');
 -- SET FOREIGN_KEY_CHECKS=1;
