@@ -55,8 +55,8 @@ public class MainPageServices {
         ObjectMapper mapper = new ObjectMapper();
         WordsContent wordsContent = new WordsContent();
         try {
-            String cleanJson = mapper.readValue(words, String.class);
-            wordsContent = mapper.readValue(cleanJson, WordsContent.class);
+            // String cleanJson = mapper.readValue(words, String.class);
+            wordsContent = mapper.readValue(words, WordsContent.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -70,8 +70,8 @@ public class MainPageServices {
         CardsContent cardsContent = new CardsContent();
 
         try {
-            String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cleanJson, CardsContent.class);
+            // String cleanJson = mapper.readValue(cards, String.class);
+            cardsContent = mapper.readValue(cards, CardsContent.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -84,8 +84,8 @@ public class MainPageServices {
         ObjectMapper mapper = new ObjectMapper();
         BanksLogosContent banksLogosContent = new BanksLogosContent();
         try {
-            String cleanJson = mapper.readValue(banksLogos, String.class);
-            banksLogosContent = mapper.readValue(cleanJson, BanksLogosContent.class);
+            // String cleanJson = mapper.readValue(banksLogos, String.class);
+            banksLogosContent = mapper.readValue(banksLogos, BanksLogosContent.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -98,8 +98,8 @@ public class MainPageServices {
         ObjectMapper mapper = new ObjectMapper();
         CardsContent cardsContent = new CardsContent();
         try {
-            String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cleanJson, CardsContent.class);
+            // String cleanJson = mapper.readValue(cards, String.class);
+            cardsContent = mapper.readValue(cards, CardsContent.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -112,8 +112,8 @@ public class MainPageServices {
         ObjectMapper mapper = new ObjectMapper();
         CardsContent cardsContent = new CardsContent();
         try {
-            String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cleanJson, CardsContent.class);
+            // String cleanJson = mapper.readValue(cards, String.class);
+            cardsContent = mapper.readValue(cards, CardsContent.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -126,8 +126,8 @@ public class MainPageServices {
         ObjectMapper mapper = new ObjectMapper();
         CardsContent cardsContent = new CardsContent();
         try {
-            String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cleanJson, CardsContent.class);
+            // String cleanJson = mapper.readValue(cards, String.class);
+            cardsContent = mapper.readValue(cards, CardsContent.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -140,8 +140,8 @@ public class MainPageServices {
         ObjectMapper mapper = new ObjectMapper();
         ContactUsCard cardsContent = new ContactUsCard();
         try {
-            String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cleanJson, ContactUsCard.class);
+            // String cleanJson = mapper.readValue(cards, String.class);
+            cardsContent = mapper.readValue(cards, ContactUsCard.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
