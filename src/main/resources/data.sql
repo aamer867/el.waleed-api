@@ -63,6 +63,7 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
          "link": "https://www.mizrahi-tefahot.co.il"
        }
      ]}');
+
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C04','B02','mission_vision_values','CARD',
      '{
@@ -117,7 +118,7 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
      ]}');
 
 -- Contact Info
-INSERT INTO subsections (id, section_id, title, type, data) VALUES
-    ('C10','B05','contact_info','INFO',
-     '{ "email": "info@yourcompany.com", "address": "123 Business Street, Downtown, Cairo, Egypt", "opening_hours": "Sunday – Thursday, 9:00 AM – 5:00 PM", "phone": "+1234567890" }');
--- SET FOREIGN_KEY_CHECKS=1;
+    INSERT INTO subsections (id, section_id, title, type, data) VALUES
+        ('C10','B05','contact_info','INFO',
+         '{ "email": "info@yourcompany.com", "address": "123 Business Street, Downtown, Cairo, Egypt", "opening_hours": "Sunday – Thursday, 9:00 AM – 5:00 PM", "phone": "+1234567890" }');
+    -- SET FOREIGN_KEY_CHECKS=1;
