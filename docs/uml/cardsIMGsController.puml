@@ -1,16 +1,17 @@
 @startuml
-Interface BaseController {
-    - subSectionRepository: SubSectionRepository
-    - objectMapper: ObjectMapper
-    - subSection: SubSection
+abstract class BaseController {
+    #subSectionService: SubSectionService
+    #subSectionRepository: SubSectionRepository
+    #objectMapper: ObjectMapper
 
-    + updateSection(CardsContent cardsContent, String action)
+    + abstract updateSection(CardsContent cardsContent, String action, SubSectionKey key): String
+    + abstract getSubSection(SubSectionKey key): SubSection
 }
 
-class StringController {
+abstract class StringController {
     + updateSection(CardsContent cardsContent, String action)
 }
-class MultipleStringController {
+abstract class MultipleStringController {
     + updateSection(CardsContent cardsContent, String action)
 }
 LandingPageWords --|> MultipleStringController
@@ -19,7 +20,7 @@ ContactUsController --|> StringController
 StringController --|> BaseController
 MultipleStringController --|> BaseController
 
-class CardsIMGsController {
+abstract class CardsIMGsController {
     + updateSection(CardsContent cardsContent, String action)
 }
 
