@@ -37,6 +37,11 @@ public class ClientsSectionController extends CardsIMGsController {
     }
 
     @Override
+    protected String getFolderName() {
+        return "clients-cards";
+    }
+
+    @Override
     protected SubSection getSubSection(SubSectionKey MAIN_PAGE_CLIENTS_SUBSECTION) {
         return subSectionService.getSubSection(MAIN_PAGE_CLIENTS_SUBSECTION);
     }

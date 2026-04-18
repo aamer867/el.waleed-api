@@ -6,6 +6,7 @@ abstract class BaseController {
 
     + abstract updateSection(CardsContent cardsContent, String action, SubSectionKey key): String
     + abstract getSubSection(SubSectionKey key): SubSection
+    # abstract getFolderName(): String
 }
 
 abstract class StringController {

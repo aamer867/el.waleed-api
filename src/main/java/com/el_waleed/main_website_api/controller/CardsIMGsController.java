@@ -1,10 +1,7 @@
 package com.el_waleed.main_website_api.controller;
 
 import com.el_waleed.main_website_api.data.SubSectionRepository;
-import com.el_waleed.main_website_api.dto.Card;
-import com.el_waleed.main_website_api.dto.CardsContent;
-import com.el_waleed.main_website_api.dto.ImageHandler;
-import com.el_waleed.main_website_api.dto.SubSection;
+import com.el_waleed.main_website_api.dto.*;
 import com.el_waleed.main_website_api.enums.SubSectionKey;
 import com.el_waleed.main_website_api.services.FileUpload;
 import com.el_waleed.main_website_api.services.FileUploadGloballyHostinger;
@@ -29,10 +26,10 @@ public abstract class CardsIMGsController extends BaseController{
     }
 
     @Override
-    public String updateSection(CardsContent cardsContent, String action, SubSectionKey key) throws JsonProcessingException {
+    public <T extends CardType> String updateSection(CardsContent<T> cardsContent, String action, SubSectionKey key) throws JsonProcessingException {
         SubSection subSection = getSubSection(key);
 
-        for(Card card : cardsContent.getCards()){
+        for(T card : cardsContent.getCards()){
             if(card.getImage() == null) {
                 card.setImage(new ImageHandler());
             }
@@ -51,7 +48,7 @@ public abstract class CardsIMGsController extends BaseController{
                 FileUpload fileUpload = new FileUploadGloballyHostinger();
                 fileUpload.setFile(file);
                 try {
-                    String filePath = fileUpload.uploadFile("cards-section");
+                    String filePath = fileUpload.uploadFile(getFolderName());
                     card.setImageUrl(filePath);
                 } catch (IOException e) {
                     e.printStackTrace();

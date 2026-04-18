@@ -5,6 +5,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class CardsContent {
-    List<Card> cards;
+public class CardsContent<T extends CardType> {
+    List<T> cards;
 }

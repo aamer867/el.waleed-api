@@ -1,6 +1,7 @@
 package com.el_waleed.main_website_api.controller;
 
 import com.el_waleed.main_website_api.data.SubSectionRepository;
+import com.el_waleed.main_website_api.dto.CardType;
 import com.el_waleed.main_website_api.dto.CardsContent;
 import com.el_waleed.main_website_api.dto.SubSection;
 import com.el_waleed.main_website_api.enums.SubSectionKey;
@@ -29,6 +30,8 @@ public abstract class BaseController {
 
     protected abstract SubSection getSubSection(SubSectionKey key);
 
-    protected abstract String updateSection(CardsContent cardsContent, String action, SubSectionKey key) throws JsonProcessingException;
+    protected abstract <T extends CardType> String updateSection(CardsContent<T> cardsContent, String action, SubSectionKey key) throws JsonProcessingException;
+
+    protected abstract String getFolderName();
 
 }

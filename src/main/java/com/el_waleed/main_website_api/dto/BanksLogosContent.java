@@ -5,6 +5,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BanksLogosContent {
-    private List<BankData> banks;
+public class BanksLogosContent implements CardType {
+    private List<BankData> cards;
 }
