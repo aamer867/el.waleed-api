@@ -39,14 +39,20 @@ public class ClientsSectionController extends CardsIMGsController {
     }
 
     @Override
-    protected SubSection getSubSection(SubSectionKey MAIN_PAGE_CLIENTS_SUBSECTION) {
-        return subSectionService.getSubSection(MAIN_PAGE_CLIENTS_SUBSECTION);
+    protected SubSection getSubSection() {
+        SubSection subSection = new SubSection();
+        subSection.setId("C09");
+        subSection.setSectionId("B04");
+        subSection.setTitle("clients_cards");
+        subSection.setType("CARDS");
+        subSection.setUpdatedAt(new Date());
+        return subSection;
     }
 
     @PostMapping
     public String updateSection(
-            CardsContent cardsContent,
+            CardsContent<RegularCard> cardsContent,
             @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(cardsContent, action, SubSectionKey.MAIN_PAGE_CLIENTS_SUBSECTION, RegularCard::new);
+        return super.updateSection(cardsContent, action, RegularCard::new);
     }
 }

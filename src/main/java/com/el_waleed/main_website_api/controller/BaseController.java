@@ -30,9 +30,9 @@ public abstract class BaseController {
         this.objectMapper = objectMapper;
     }
 
-    protected abstract SubSection getSubSection(SubSectionKey key);
+    protected abstract SubSection getSubSection();
 
-    protected abstract <T extends Card> String updateSection(CardsContent<T> cardsContent, String action, SubSectionKey key, Supplier<T> creator) throws JsonProcessingException;
+    protected abstract <T extends Card> String updateSection(CardsContent<T> cardsContent, String action, Supplier<T> creator) throws JsonProcessingException;
 
     protected abstract String getFolderName();
 

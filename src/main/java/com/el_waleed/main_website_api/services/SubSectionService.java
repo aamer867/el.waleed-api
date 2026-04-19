@@ -21,6 +21,14 @@ public class SubSectionService {
                 subSection.setType("CARDS");
                 subSection.setUpdatedAt(new Date());
             }
+
+            case MAIN_PAGE_LANDING_BANK_LOGOS -> {
+                subSection.setId("C03");
+                subSection.setSectionId("B01");
+                subSection.setTitle("bank_logos");
+                subSection.setType("IMG");
+                subSection.setUpdatedAt(new Date());
+            }
         }
 
         return subSection;

@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @Controller
 @Slf4j
 @RequestMapping("main-page/landing-page-section/update-bank-logos")
@@ -25,8 +27,14 @@ public class LandingPageBankLogosController extends CardsIMGsController {
     }
 
     @Override
-    protected SubSection getSubSection(SubSectionKey MAIN_PAGE_LANDING_BANK_LOGOS) {
-        return subSectionService.getSubSection(MAIN_PAGE_LANDING_BANK_LOGOS);
+    protected SubSection getSubSection() {
+        SubSection subSection = new SubSection();
+        subSection.setId("C03");
+        subSection.setSectionId("B01");
+        subSection.setTitle("bank_logos");
+        subSection.setType("IMG");
+        subSection.setUpdatedAt(new Date());
+        return subSection;
     }
 
     @Override
@@ -35,9 +43,9 @@ public class LandingPageBankLogosController extends CardsIMGsController {
     }
 
     @PostMapping
-    public String updateLandingPageBankLogos(@ModelAttribute("landingPageBankLogos") CardsContent banksLogosContent,
+    public String updateLandingPageBankLogos(@ModelAttribute("landingPageBankLogos") BankCardsContent banksLogosContent,
                                              @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(banksLogosContent, action, SubSectionKey.MAIN_PAGE_LANDING_BANK_LOGOS, BankCard::new);
+        return super.updateSection(banksLogosContent, action, BankCard::new);
     }
 
 }

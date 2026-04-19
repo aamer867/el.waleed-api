@@ -4,6 +4,7 @@ import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
@@ -85,7 +86,7 @@ public class MainPageServices {
         CardsContent<BankCard> banksLogosContent = new CardsContent<>();
         try {
             // String cleanJson = mapper.readValue(banksLogos, String.class);
-            banksLogosContent = mapper.readValue(banksLogos, CardsContent.class);
+            banksLogosContent = mapper.readValue(banksLogos, new TypeReference<CardsContent<BankCard>>() {});
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -120,14 +121,15 @@ public class MainPageServices {
         return cardsContent;
     }
 
-    public CardsContent pullCardsClientsFromDB(List<Section> sections) {
+    public CardsContent<RegularCard> pullCardsClientsFromDB(List<Section> sections) {
         SubSection cardsSubSection = parseSubsectionData("B04", sections).get().getSubSections().get(0);
         String cards = cardsSubSection.getContentJson();
         ObjectMapper mapper = new ObjectMapper();
-        CardsContent cardsContent = new CardsContent();
+        CardsContent<RegularCard> cardsContent = new CardsContent<>();
         try {
             // String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cards, CardsContent.class);
+            cardsContent = mapper.readValue(cards, new TypeReference<CardsContent<RegularCard>>() {
+            });
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

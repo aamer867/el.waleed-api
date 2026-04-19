@@ -29,9 +29,8 @@ public abstract class CardsIMGsController extends BaseController{
     @Override
     public <T extends Card> String updateSection(CardsContent<T> cardsContent,
                                                  String action,
-                                                 SubSectionKey key,
                                                  Supplier<T> creator) throws JsonProcessingException {
-        SubSection subSection = getSubSection(key);
+        SubSection subSection = getSubSection();
 
         for(T card : cardsContent.getCards()){
             if(card.getImage() == null) {
