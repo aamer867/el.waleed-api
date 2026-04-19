@@ -33,4 +33,32 @@ LandingPageCardsController --|> CardsIMGsController
 ServicesSectionController --|> CardsIMGsController
 AboutUsController --|> CardsIMGsController
 
+
+Abstract class Card {
+    - String imageUrl;
+    - ImageHandler image;
+    - boolean visible;
+
+}
+
+class RegularCard {
+    - String title;
+    - String header;
+    - String description;
+}
+
+class BankCard {
+    - String name;
+    - String bankLink;
+}
+
+class CardsContent {
+    List<Card> cards;
+}
+
+CardsContent *-- Card
+BankCard --|> Card
+RegularCard --|> Card
+
+
 @enduml

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.function.Supplier;
 
 @Controller
 public abstract class CardsIMGsController extends BaseController{
@@ -26,7 +27,10 @@ public abstract class CardsIMGsController extends BaseController{
     }
 
     @Override
-    public <T extends CardType> String updateSection(CardsContent<T> cardsContent, String action, SubSectionKey key) throws JsonProcessingException {
+    public <T extends Card> String updateSection(CardsContent<T> cardsContent,
+                                                 String action,
+                                                 SubSectionKey key,
+                                                 Supplier<T> creator) throws JsonProcessingException {
         SubSection subSection = getSubSection(key);
 
         for(T card : cardsContent.getCards()){
@@ -36,7 +40,7 @@ public abstract class CardsIMGsController extends BaseController{
         }
 
         if(action.equals("add")) {
-            cardsContent.getCards().add(new Card());
+            cardsContent.getCards().add(creator.get());
             subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
             subSectionRepository.update(subSection);
             return "redirect:/main-page";

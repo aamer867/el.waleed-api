@@ -5,12 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class Card implements CardType{
-    private String title;
+public abstract class Card {
     @JsonProperty("image_url")
     private String imageUrl;
-    private String header;
-    private String description;
     @JsonIgnore
     private ImageHandler image;
     @JsonIgnore

@@ -63,11 +63,11 @@ public class MainPageServices {
         return wordsContent;
     }
 
-    public CardsContent pullCardsFromDB(List<Section> sections) {
+    public CardsContent<RegularCard> pullCardsFromDB(List<Section> sections) {
         SubSection cardsSubSection = parseSubsectionData("B01", sections).get().getSubSections().get(1);
         String cards = cardsSubSection.getContentJson();
         ObjectMapper mapper = new ObjectMapper();
-        CardsContent cardsContent = new CardsContent();
+        CardsContent<RegularCard> cardsContent = new CardsContent<>();
 
         try {
             // String cleanJson = mapper.readValue(cards, String.class);
@@ -78,14 +78,14 @@ public class MainPageServices {
         return cardsContent;
     }
 
-    public BanksLogosContent pullBanksLogosFromDB(List<Section> sections) {
+    public CardsContent<BankCard> pullBanksLogosFromDB(List<Section> sections) {
         SubSection banksLogosSubSection = parseSubsectionData("B01", sections).get().getSubSections().get(2);
         String banksLogos = banksLogosSubSection.getContentJson();
         ObjectMapper mapper = new ObjectMapper();
-        BanksLogosContent banksLogosContent = new BanksLogosContent();
+        CardsContent<BankCard> banksLogosContent = new CardsContent<>();
         try {
             // String cleanJson = mapper.readValue(banksLogos, String.class);
-            banksLogosContent = mapper.readValue(banksLogos, BanksLogosContent.class);
+            banksLogosContent = mapper.readValue(banksLogos, CardsContent.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

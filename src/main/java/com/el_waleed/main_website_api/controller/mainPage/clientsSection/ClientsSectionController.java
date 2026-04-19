@@ -2,10 +2,7 @@ package com.el_waleed.main_website_api.controller.mainPage.clientsSection;
 
 import com.el_waleed.main_website_api.controller.CardsIMGsController;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
-import com.el_waleed.main_website_api.dto.Card;
-import com.el_waleed.main_website_api.dto.CardsContent;
-import com.el_waleed.main_website_api.dto.ImageHandler;
-import com.el_waleed.main_website_api.dto.SubSection;
+import com.el_waleed.main_website_api.dto.*;
 import com.el_waleed.main_website_api.enums.SubSectionKey;
 import com.el_waleed.main_website_api.services.FileUpload;
 import com.el_waleed.main_website_api.services.FileUploadGloballyHostinger;
@@ -50,6 +47,6 @@ public class ClientsSectionController extends CardsIMGsController {
     public String updateSection(
             CardsContent cardsContent,
             @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(cardsContent, action, SubSectionKey.MAIN_PAGE_CLIENTS_SUBSECTION);
+        return super.updateSection(cardsContent, action, SubSectionKey.MAIN_PAGE_CLIENTS_SUBSECTION, RegularCard::new);
     }
 }
