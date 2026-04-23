@@ -3,6 +3,9 @@ package com.el_waleed.main_website_api.services;
 import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
+import com.el_waleed.main_website_api.dto.cards.BankCard;
+import com.el_waleed.main_website_api.dto.cards.CardsContent;
+import com.el_waleed.main_website_api.dto.cards.RegularCard;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -72,7 +75,7 @@ public class MainPageServices {
 
         try {
             // String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cards, CardsContent.class);
+            cardsContent = mapper.readValue(cards, new TypeReference<CardsContent<RegularCard>>() {});
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

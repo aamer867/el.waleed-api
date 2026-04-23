@@ -3,22 +3,19 @@ package com.el_waleed.main_website_api.controller.mainPage.clientsSection;
 import com.el_waleed.main_website_api.controller.CardsIMGsController;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
-import com.el_waleed.main_website_api.enums.SubSectionKey;
-import com.el_waleed.main_website_api.services.FileUpload;
-import com.el_waleed.main_website_api.services.FileUploadGloballyHostinger;
+import com.el_waleed.main_website_api.dto.cards.CardsContent;
+import com.el_waleed.main_website_api.dto.cards.RegularCard;
+import com.el_waleed.main_website_api.dto.cards.RegularCardsContent;
 import com.el_waleed.main_website_api.services.SubSectionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.Date;
 
 @Controller
@@ -51,7 +48,7 @@ public class ClientsSectionController extends CardsIMGsController {
 
     @PostMapping
     public String updateSection(
-            CardsContent<RegularCard> cardsContent,
+            RegularCardsContent cardsContent,
             @RequestParam String action) throws JsonProcessingException {
         return super.updateSection(cardsContent, action, RegularCard::new);
     }

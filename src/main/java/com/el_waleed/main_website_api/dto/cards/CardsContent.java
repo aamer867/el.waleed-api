@@ -1,4 +1,4 @@
-package com.el_waleed.main_website_api.dto;
+package com.el_waleed.main_website_api.dto.cards;
 
 import lombok.Data;
 

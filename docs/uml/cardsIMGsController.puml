@@ -55,10 +55,19 @@ class BankCard {
 class CardsContent {
     List<Card> cards;
 }
+class BankCardsContent {
+    getCards();
+    setCards();
+}
+class RegularCardsContent {
+    getCards();
+    setCards();
+}
 
 CardsContent *-- Card
 BankCard --|> Card
 RegularCard --|> Card
-
+BankCardsContent --|> CardsContent
+RegularCardsContent --|> CardsContent
 
 @enduml

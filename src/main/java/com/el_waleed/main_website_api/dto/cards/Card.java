@@ -1,5 +1,6 @@
-package com.el_waleed.main_website_api.dto;
+package com.el_waleed.main_website_api.dto.cards;
 
+import com.el_waleed.main_website_api.dto.ImageHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
