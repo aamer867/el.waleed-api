@@ -2,10 +2,7 @@ package com.el_waleed.main_website_api.controller.mainPage.clientsSection;
 
 import com.el_waleed.main_website_api.controller.CardsIMGsController;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
-import com.el_waleed.main_website_api.dto.Card;
-import com.el_waleed.main_website_api.dto.CardsContent;
-import com.el_waleed.main_website_api.dto.ImageHandler;
-import com.el_waleed.main_website_api.dto.SubSection;
+import com.el_waleed.main_website_api.dto.*;
 import com.el_waleed.main_website_api.enums.SubSectionKey;
 import com.el_waleed.main_website_api.services.FileUpload;
 import com.el_waleed.main_website_api.services.FileUploadGloballyHostinger;
@@ -42,14 +39,20 @@ public class ClientsSectionController extends CardsIMGsController {
     }
 
     @Override
-    protected SubSection getSubSection(SubSectionKey MAIN_PAGE_CLIENTS_SUBSECTION) {
-        return subSectionService.getSubSection(MAIN_PAGE_CLIENTS_SUBSECTION);
+    protected SubSection getSubSection() {
+        SubSection subSection = new SubSection();
+        subSection.setId("C09");
+        subSection.setSectionId("B04");
+        subSection.setTitle("clients_cards");
+        subSection.setType("CARDS");
+        subSection.setUpdatedAt(new Date());
+        return subSection;
     }
 
     @PostMapping
     public String updateSection(
-            CardsContent cardsContent,
+            CardsContent<RegularCard> cardsContent,
             @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(cardsContent, action, SubSectionKey.MAIN_PAGE_CLIENTS_SUBSECTION);
+        return super.updateSection(cardsContent, action, RegularCard::new);
     }
 }

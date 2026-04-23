@@ -96,26 +96,26 @@
             enctype="multipart/form-data"
     >
         <h3>Edit Bank Logos: </h3>
-        <div th:each="bankLogo, iterStat : *{banks}">
+        <div th:each="bankLogo, iterStat : *{cards}">
             <span>Bank Name: </span>
             <input
                     type="text"
-                    th:field="*{banks[__${iterStat.index}__].name}"
+                    th:field="*{cards[__${iterStat.index}__].name}"
             />
 
             <span>Bank Link</span>
             <input
                     type="text"
-                    th:field="*{banks[__${iterStat.index}__].bankLink}"
+                    th:field="*{cards[__${iterStat.index}__].bankLink}"
             />
             <span>Image Upload: </span>
             <input
                     type="file"
-                    th:field="*{banks[__${iterStat.index}__].image.image}"
+                    th:field="*{cards[__${iterStat.index}__].image.image}"
             />
             <input
                 type="checkbox"
-                th:field="*{banks[__${iterStat.index}__].visible}"
+                th:field="*{cards[__${iterStat.index}__].visible}"
             />
             <span>Hide Bank</span>
         </div>

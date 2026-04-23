@@ -2,9 +2,7 @@ package com.el_waleed.main_website_api.controller.mainPage;
 
 import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
-import com.el_waleed.main_website_api.dto.Section;
-import com.el_waleed.main_website_api.dto.SubSection;
-import com.el_waleed.main_website_api.dto.WordsContent;
+import com.el_waleed.main_website_api.dto.*;
 import com.el_waleed.main_website_api.services.MainPageServices;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

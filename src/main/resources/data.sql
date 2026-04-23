@@ -46,7 +46,7 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
 -- Bank Logos
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C03','B01','bank_logos','IMG',
-     '{"banks":[
+     '{"cards":[
        {
          "name": "bank_misr",
          "image_url": "/sources/static/images/bank_misr.png",

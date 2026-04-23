@@ -1,7 +1,7 @@
 package com.el_waleed.main_website_api.controller;
 
 import com.el_waleed.main_website_api.data.SubSectionRepository;
-import com.el_waleed.main_website_api.dto.CardType;
+import com.el_waleed.main_website_api.dto.Card;
 import com.el_waleed.main_website_api.dto.CardsContent;
 import com.el_waleed.main_website_api.dto.SubSection;
 import com.el_waleed.main_website_api.enums.SubSectionKey;
@@ -12,6 +12,8 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import java.util.function.Supplier;
 
 @Slf4j
 public abstract class BaseController {
@@ -28,9 +30,9 @@ public abstract class BaseController {
         this.objectMapper = objectMapper;
     }
 
-    protected abstract SubSection getSubSection(SubSectionKey key);
+    protected abstract SubSection getSubSection();
 
-    protected abstract <T extends CardType> String updateSection(CardsContent<T> cardsContent, String action, SubSectionKey key) throws JsonProcessingException;
+    protected abstract <T extends Card> String updateSection(CardsContent<T> cardsContent, String action, Supplier<T> creator) throws JsonProcessingException;
 
     protected abstract String getFolderName();
 
