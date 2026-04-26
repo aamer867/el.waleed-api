@@ -21,7 +21,7 @@ public class MainPageServices {
 
     private final SectionRepository sectionRepository;
     private final SubSectionRepository subSectionRepository;
-    private final List<Section> sections;
+    private List<Section> sections;
     private final ObjectMapper mapper;
 
 
@@ -29,7 +29,6 @@ public class MainPageServices {
                             SubSectionRepository subSectionRepository) {
         this.sectionRepository = sectionRepository;
         this.subSectionRepository = subSectionRepository;
-        this.sections = this.addSubsectionsToEachSection();
         this.mapper = new ObjectMapper();
 
     }
@@ -48,6 +47,7 @@ public class MainPageServices {
     }
 
     private Optional<Section> parseSubsectionData(String id) {
+        sections = this.addSubsectionsToEachSection();
         for (Section sec : sections) {
             if(sec.getId().equals(id)) {
                 return Optional.of(sec);
