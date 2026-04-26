@@ -4,6 +4,7 @@ import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
 import com.el_waleed.main_website_api.dto.cards.BankCard;
+import com.el_waleed.main_website_api.dto.cards.Card;
 import com.el_waleed.main_website_api.dto.cards.CardsContent;
 import com.el_waleed.main_website_api.dto.cards.RegularCard;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -20,16 +21,20 @@ public class MainPageServices {
 
     private final SectionRepository sectionRepository;
     private final SubSectionRepository subSectionRepository;
+    private final List<Section> sections;
+    private final ObjectMapper mapper;
 
 
     public MainPageServices(SectionRepository sectionRepository,
                             SubSectionRepository subSectionRepository) {
         this.sectionRepository = sectionRepository;
         this.subSectionRepository = subSectionRepository;
+        this.sections = this.addSubsectionsToEachSection();
+        this.mapper = new ObjectMapper();
 
     }
 
-    public List<Section> addSubsectionsToEachSection() {
+    private List<Section> addSubsectionsToEachSection() {
         List<Section> sections = new ArrayList<>();
         List<Section> allSections = sectionRepository.returnAllSections();
         for (Section section : allSections) {
@@ -42,8 +47,7 @@ public class MainPageServices {
         return sections;
     }
 
-    private Optional<Section> parseSubsectionData(String id,
-                                                 List<Section> sections) {
+    private Optional<Section> parseSubsectionData(String id) {
         for (Section sec : sections) {
             if(sec.getId().equals(id)) {
                 return Optional.of(sec);
@@ -53,86 +57,31 @@ public class MainPageServices {
     }
 
     public WordsContent pullLandingPageWords(List<Section> sections) {
-        SubSection wordsSubSection = parseSubsectionData("B01", sections).get().getSubSections().get(0);
+        SubSection wordsSubSection = parseSubsectionData("B01").get().getSubSections().get(0);
         String words = wordsSubSection.getContentJson();
 
         ObjectMapper mapper = new ObjectMapper();
         WordsContent wordsContent = new WordsContent();
         try {
-            // String cleanJson = mapper.readValue(words, String.class);
-            wordsContent = mapper.readValue(words, WordsContent.class);
+            String cleanJson = mapper.readValue(words, String.class);
+            wordsContent = mapper.readValue(cleanJson, WordsContent.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         return wordsContent;
     }
 
-    public CardsContent<RegularCard> pullCardsFromDB(List<Section> sections) {
-        SubSection cardsSubSection = parseSubsectionData("B01", sections).get().getSubSections().get(1);
+    public <T extends Card> CardsContent<T> pullCardsFromDB(String id,
+                                                            int position,
+                                                            TypeReference<CardsContent<T>> typeReference) {
+
+        SubSection cardsSubSection = parseSubsectionData(id).get().getSubSections().get(position);
         String cards = cardsSubSection.getContentJson();
-        ObjectMapper mapper = new ObjectMapper();
-        CardsContent<RegularCard> cardsContent = new CardsContent<>();
+        CardsContent<T> cardsContent = new CardsContent<>();
 
         try {
-            // String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cards, new TypeReference<CardsContent<RegularCard>>() {});
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return cardsContent;
-    }
-
-    public CardsContent<BankCard> pullBanksLogosFromDB(List<Section> sections) {
-        SubSection banksLogosSubSection = parseSubsectionData("B01", sections).get().getSubSections().get(2);
-        String banksLogos = banksLogosSubSection.getContentJson();
-        ObjectMapper mapper = new ObjectMapper();
-        CardsContent<BankCard> banksLogosContent = new CardsContent<>();
-        try {
-            // String cleanJson = mapper.readValue(banksLogos, String.class);
-            banksLogosContent = mapper.readValue(banksLogos, new TypeReference<CardsContent<BankCard>>() {});
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return banksLogosContent;
-    }
-
-    public CardsContent pullCardsAboutUsFromDB(List<Section> sections) {
-        SubSection cardsSubSection = parseSubsectionData("B02", sections).get().getSubSections().get(0);
-        String cards = cardsSubSection.getContentJson();
-        ObjectMapper mapper = new ObjectMapper();
-        CardsContent cardsContent = new CardsContent();
-        try {
-            // String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cards, CardsContent.class);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return cardsContent;
-    }
-
-    public CardsContent pullCardsServicesFromDB(List<Section> sections) {
-        SubSection cardsSubSection = parseSubsectionData("B03", sections).get().getSubSections().get(0);
-        String cards = cardsSubSection.getContentJson();
-        ObjectMapper mapper = new ObjectMapper();
-        CardsContent cardsContent = new CardsContent();
-        try {
-            // String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cards, CardsContent.class);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return cardsContent;
-    }
-
-    public CardsContent<RegularCard> pullCardsClientsFromDB(List<Section> sections) {
-        SubSection cardsSubSection = parseSubsectionData("B04", sections).get().getSubSections().get(0);
-        String cards = cardsSubSection.getContentJson();
-        ObjectMapper mapper = new ObjectMapper();
-        CardsContent<RegularCard> cardsContent = new CardsContent<>();
-        try {
-            // String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cards, new TypeReference<CardsContent<RegularCard>>() {
-            });
+            String cleanJson = mapper.readValue(cards, String.class);
+            return mapper.readValue(cleanJson, typeReference);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -140,13 +89,13 @@ public class MainPageServices {
     }
 
     public ContactUsCard pullCardsContactUsFromDB(List<Section> sections) {
-        SubSection cardsSubSection = parseSubsectionData("B05", sections).get().getSubSections().get(0);
+        SubSection cardsSubSection = parseSubsectionData("B05").get().getSubSections().get(0);
         String cards = cardsSubSection.getContentJson();
         ObjectMapper mapper = new ObjectMapper();
         ContactUsCard cardsContent = new ContactUsCard();
         try {
-            // String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cards, ContactUsCard.class);
+            String cleanJson = mapper.readValue(cards, String.class);
+            cardsContent = mapper.readValue(cleanJson, ContactUsCard.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

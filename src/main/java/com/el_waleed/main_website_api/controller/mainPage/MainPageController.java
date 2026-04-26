@@ -3,8 +3,13 @@ package com.el_waleed.main_website_api.controller.mainPage;
 import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
+import com.el_waleed.main_website_api.dto.cards.BankCard;
+import com.el_waleed.main_website_api.dto.cards.Card;
+import com.el_waleed.main_website_api.dto.cards.CardsContent;
+import com.el_waleed.main_website_api.dto.cards.RegularCard;
 import com.el_waleed.main_website_api.services.MainPageServices;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,13 +41,36 @@ public class MainPageController {
 
     @GetMapping
     public String mainPage(Model model) {
-        this.sections = this.mainPageServices.addSubsectionsToEachSection();
         model.addAttribute("landingPageWords", mainPageServices.pullLandingPageWords(sections));
-        model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB(sections));
-        model.addAttribute("landingPageBankLogos", mainPageServices.pullBanksLogosFromDB(sections));
-        model.addAttribute("aboutUsSection", mainPageServices.pullCardsAboutUsFromDB(sections));
-        model.addAttribute("serviceSubSection", mainPageServices.pullCardsServicesFromDB(sections));
-        model.addAttribute("clientsSection", mainPageServices.pullCardsClientsFromDB(sections));
+
+        model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB("B01",
+                1,
+                new TypeReference<CardsContent<RegularCard>>() {}));
+
+        model.addAttribute("landingPageBankLogos", mainPageServices.pullCardsFromDB(
+                "B01",
+                2,
+                new TypeReference<CardsContent<BankCard>>() {}
+        ));
+
+        model.addAttribute("aboutUsSection", mainPageServices.pullCardsFromDB(
+                "B02",
+                0,
+                new TypeReference<CardsContent<RegularCard>>() {}
+        ));
+
+        model.addAttribute("serviceSubSection", mainPageServices.pullCardsFromDB(
+                "B03",
+                0,
+                new TypeReference<CardsContent<RegularCard>>() {}
+        ));
+
+        model.addAttribute("clientsSection", mainPageServices.pullCardsFromDB(
+                "B04",
+                0,
+                new TypeReference<CardsContent<RegularCard>>() {}
+        ));
+
         model.addAttribute("constactUsSubsection", mainPageServices.pullCardsContactUsFromDB(sections));
         return "main-page";
     }
