@@ -5,15 +5,15 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BankCardsContent extends CardsContent<BankCard> {
+public class BankCardsContent extends CardsContent<BankIMGCard> {
 
     @Override
-    public List<BankCard> getCards() {
+    public List<BankIMGCard> getCards() {
         return super.getCards();
     }
 
     @Override
-    public void setCards(List<BankCard> cards) {
+    public void setCards(List<BankIMGCard> cards) {
         super.setCards(cards);
     }
 }

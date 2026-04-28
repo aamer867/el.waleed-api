@@ -12,14 +12,11 @@ abstract class BaseController {
 abstract class StringController {
     + updateSection(CardsContent cardsContent, String action)
 }
-abstract class MultipleStringController {
-    + updateSection(CardsContent cardsContent, String action)
-}
-LandingPageWords --|> MultipleStringController
+
+LandingPageWords --|> CardsIMGsController
 LandingPageSection --|> StringController
 ContactUsController --|> StringController
 StringController --|> BaseController
-MultipleStringController --|> BaseController
 
 abstract class CardsIMGsController {
     + updateSection(CardsContent cardsContent, String action)
@@ -32,42 +29,4 @@ LandingPageBankLogosController --|> CardsIMGsController
 LandingPageCardsController --|> CardsIMGsController
 ServicesSectionController --|> CardsIMGsController
 AboutUsController --|> CardsIMGsController
-
-
-Abstract class Card {
-    - String imageUrl;
-    - ImageHandler image;
-    - boolean visible;
-
-}
-
-class RegularCard {
-    - String title;
-    - String header;
-    - String description;
-}
-
-class BankCard {
-    - String name;
-    - String bankLink;
-}
-
-class CardsContent {
-    List<Card> cards;
-}
-class BankCardsContent {
-    getCards();
-    setCards();
-}
-class RegularCardsContent {
-    getCards();
-    setCards();
-}
-
-CardsContent *-- Card
-BankCard --|> Card
-RegularCard --|> Card
-BankCardsContent --|> CardsContent
-RegularCardsContent --|> CardsContent
-
 @enduml

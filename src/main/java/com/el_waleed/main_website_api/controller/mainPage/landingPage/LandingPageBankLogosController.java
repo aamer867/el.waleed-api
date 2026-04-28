@@ -3,7 +3,7 @@ package com.el_waleed.main_website_api.controller.mainPage.landingPage;
 import com.el_waleed.main_website_api.controller.CardsIMGsController;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
-import com.el_waleed.main_website_api.dto.cards.BankCard;
+import com.el_waleed.main_website_api.dto.cards.BankIMGCard;
 import com.el_waleed.main_website_api.dto.cards.BankCardsContent;
 import com.el_waleed.main_website_api.services.SubSectionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -46,7 +46,7 @@ public class LandingPageBankLogosController extends CardsIMGsController {
     @PostMapping
     public String updateLandingPageBankLogos(@ModelAttribute("landingPageBankLogos") BankCardsContent banksLogosContent,
                                              @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(banksLogosContent, action, BankCard::new);
+        return super.updateSection(banksLogosContent, action, BankIMGCard::new);
     }
 
 }

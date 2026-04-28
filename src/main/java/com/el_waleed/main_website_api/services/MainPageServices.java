@@ -3,10 +3,10 @@ package com.el_waleed.main_website_api.services;
 import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
-import com.el_waleed.main_website_api.dto.cards.BankCard;
-import com.el_waleed.main_website_api.dto.cards.Card;
+import com.el_waleed.main_website_api.dto.cards.IMGCard;
 import com.el_waleed.main_website_api.dto.cards.CardsContent;
-import com.el_waleed.main_website_api.dto.cards.RegularCard;
+import com.el_waleed.main_website_api.dto.cards.ContactUsCard;
+import com.el_waleed.main_website_api.dto.cards.StringCard;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -56,24 +56,24 @@ public class MainPageServices {
         return Optional.empty();
     }
 
-    public WordsContent pullLandingPageWords(List<Section> sections) {
+    public StringCard pullLandingPageWords(List<Section> sections) {
         SubSection wordsSubSection = parseSubsectionData("B01").get().getSubSections().get(0);
         String words = wordsSubSection.getContentJson();
 
         ObjectMapper mapper = new ObjectMapper();
-        WordsContent wordsContent = new WordsContent();
+        StringCard wordsContent = new StringCard();
         try {
             String cleanJson = mapper.readValue(words, String.class);
-            wordsContent = mapper.readValue(cleanJson, WordsContent.class);
+            wordsContent = mapper.readValue(cleanJson, StringCard.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         return wordsContent;
     }
 
-    public <T extends Card> CardsContent<T> pullCardsFromDB(String id,
-                                                            int position,
-                                                            TypeReference<CardsContent<T>> typeReference) {
+    public <T extends IMGCard> CardsContent<T> pullCardsFromDB(String id,
+                                                               int position,
+                                                               TypeReference<CardsContent<T>> typeReference) {
 
         SubSection cardsSubSection = parseSubsectionData(id).get().getSubSections().get(position);
         String cards = cardsSubSection.getContentJson();

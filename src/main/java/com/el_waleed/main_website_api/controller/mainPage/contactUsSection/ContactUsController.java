@@ -1,7 +1,7 @@
 package com.el_waleed.main_website_api.controller.mainPage.contactUsSection;
 
 import com.el_waleed.main_website_api.data.SubSectionRepository;
-import com.el_waleed.main_website_api.dto.ContactUsCard;
+import com.el_waleed.main_website_api.dto.cards.ContactUsCard;
 import com.el_waleed.main_website_api.dto.SubSection;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

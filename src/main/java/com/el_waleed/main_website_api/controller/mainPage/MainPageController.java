@@ -3,14 +3,11 @@ package com.el_waleed.main_website_api.controller.mainPage;
 import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
-import com.el_waleed.main_website_api.dto.cards.BankCard;
-import com.el_waleed.main_website_api.dto.cards.Card;
+import com.el_waleed.main_website_api.dto.cards.BankIMGCard;
 import com.el_waleed.main_website_api.dto.cards.CardsContent;
-import com.el_waleed.main_website_api.dto.cards.RegularCard;
+import com.el_waleed.main_website_api.dto.cards.RegularIMGCard;
 import com.el_waleed.main_website_api.services.MainPageServices;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,30 +42,30 @@ public class MainPageController {
 
         model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB("B01",
                 1,
-                new TypeReference<CardsContent<RegularCard>>() {}));
+                new TypeReference<CardsContent<RegularIMGCard>>() {}));
 
         model.addAttribute("landingPageBankLogos", mainPageServices.pullCardsFromDB(
                 "B01",
                 2,
-                new TypeReference<CardsContent<BankCard>>() {}
+                new TypeReference<CardsContent<BankIMGCard>>() {}
         ));
 
         model.addAttribute("aboutUsSection", mainPageServices.pullCardsFromDB(
                 "B02",
                 0,
-                new TypeReference<CardsContent<RegularCard>>() {}
+                new TypeReference<CardsContent<RegularIMGCard>>() {}
         ));
 
         model.addAttribute("serviceSubSection", mainPageServices.pullCardsFromDB(
                 "B03",
                 0,
-                new TypeReference<CardsContent<RegularCard>>() {}
+                new TypeReference<CardsContent<RegularIMGCard>>() {}
         ));
 
         model.addAttribute("clientsSection", mainPageServices.pullCardsFromDB(
                 "B04",
                 0,
-                new TypeReference<CardsContent<RegularCard>>() {}
+                new TypeReference<CardsContent<RegularIMGCard>>() {}
         ));
 
         model.addAttribute("constactUsSubsection", mainPageServices.pullCardsContactUsFromDB(sections));

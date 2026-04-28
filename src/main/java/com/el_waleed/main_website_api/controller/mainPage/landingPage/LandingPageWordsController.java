@@ -2,7 +2,7 @@ package com.el_waleed.main_website_api.controller.mainPage.landingPage;
 
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.SubSection;
-import com.el_waleed.main_website_api.dto.WordsContent;
+import com.el_waleed.main_website_api.dto.cards.StringCard;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ public class LandingPageWordsController {
     }
 
     @PostMapping
-    public String updateLandingPageWords(@ModelAttribute("landingPageWords") WordsContent wordsContent,
+    public String updateLandingPageWords(@ModelAttribute("landingPageWords") StringCard wordsContent,
                                          @RequestParam String action,
                                          @RequestParam(name = "selectedWords", required = false) List<String> selectedWords) throws JsonProcessingException {
         log.info("Processing Landing Page Words");

@@ -2,7 +2,7 @@ package com.el_waleed.main_website_api.controller;
 
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
-import com.el_waleed.main_website_api.dto.cards.Card;
+import com.el_waleed.main_website_api.dto.cards.IMGCard;
 import com.el_waleed.main_website_api.dto.cards.CardsContent;
 import com.el_waleed.main_website_api.services.FileUpload;
 import com.el_waleed.main_website_api.services.FileUploadGloballyHostinger;
@@ -27,9 +27,9 @@ public abstract class CardsIMGsController extends BaseController{
     }
 
     @Override
-    public <T extends Card> String updateSection(CardsContent<T> cardsContent,
-                                                 String action,
-                                                 Supplier<T> creator) throws JsonProcessingException {
+    public <T extends IMGCard> String updateSection(CardsContent<T> cardsContent,
+                                                    String action,
+                                                    Supplier<T> creator) throws JsonProcessingException {
         SubSection subSection = getSubSection();
 
         for(T card : cardsContent.getCards()){
@@ -45,7 +45,7 @@ public abstract class CardsIMGsController extends BaseController{
             return "redirect:/main-page";
         } else {
             cardsContent.getCards().removeIf(card -> card.isVisible());
-            for(Card card : cardsContent.getCards()) {
+            for(IMGCard card : cardsContent.getCards()) {
                 ImageHandler imageFile = card.getImage();
                 MultipartFile file = imageFile.getImage();
                 FileUpload fileUpload = new FileUploadGloballyHostinger();

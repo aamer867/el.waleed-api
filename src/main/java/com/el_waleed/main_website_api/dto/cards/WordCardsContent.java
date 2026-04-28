@@ -5,14 +5,14 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class RegularCardsContent extends CardsContent<RegularIMGCard> {
+public class WordCardsContent extends CardsContent<WordCard> {
     @Override
-    public List<RegularIMGCard> getCards() {
+    public List<WordCard> getCards() {
         return super.getCards();
     }
 
     @Override
-    public void setCards(List<RegularIMGCard> cards) {
+    public void setCards(List<WordCard> cards) {
         super.setCards(cards);
     }
 }

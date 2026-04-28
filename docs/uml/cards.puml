@@ -1,0 +1,87 @@
+@startuml
+
+' ===== Base Abstract Classes =====
+Abstract class Card {
+}
+
+Abstract class IMGCard {
+    - String imageUrl;
+    - ImageHandler image;
+    - boolean visible;
+}
+
+Abstract class StringCard {
+}
+
+' ===== Concrete Card Types =====
+class RegularCard {
+    - String title;
+    - String header;
+    - String description;
+}
+
+class BankCard {
+    - String name;
+    - String bankLink;
+}
+
+class WordCard {
+    - String word;
+}
+
+class ContactUsCard {
+    - String email;
+    - String address;
+    - String workingHours;
+    - String phone;
+}
+
+' ===== Content Containers =====
+class CardsContent {
+    List<Card> cards;
+}
+
+class RegularCardsContent {
+    getCards();
+    setCards();
+}
+
+class BankCardsContent {
+    getCards();
+    setCards();
+}
+
+class WordCardsContent {
+    getCards();
+    setCards();
+}
+
+class ContanctUsContent {
+    getCards();
+    setCards();
+}
+
+' ===== Inheritance Relationships =====
+IMGCard --|> Card
+StringCard --|> Card
+
+RegularCard --|> IMGCard
+BankCard --|> IMGCard
+
+WordCard --|> StringCard
+ContactUsCard --|> StringCard
+
+BankCardsContent --|> CardsContent
+RegularCardsContent --|> CardsContent
+WordCardsContent --|> CardsContent
+ContanctUsContent --|> CardsContent
+
+' ===== Composition Relationships =====
+CardsContent *-- Card
+
+RegularCardsContent *-- RegularCard
+BankCardsContent *-- BankCard
+WordCardsContent *-- WordCard
+ContanctUsContent *-- ContactUsCard
+
+@enduml
