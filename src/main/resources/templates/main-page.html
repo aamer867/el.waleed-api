@@ -39,15 +39,14 @@
             th:object="${landingPageWords}"
     >
         <h3>Edit the words: </h3>
-        <div th:each="word, iterStat : *{words}">
+        <div th:each="card, iterStat : *{cards}">
             <input
                     type="text"
-                    th:field="*{words[__${iterStat.index}__]}"
+                    th:field="*{cards[__${iterStat.index}__].word}"
             />
             <input
                 type="checkbox"
-                name="selectedWords"
-                th:value="${word}"
+                th:field="*{cards[__${iterStat.index}__].visible}"
             />
             <span>Hide Word</span>
         </div>

@@ -53,21 +53,6 @@ public class MainPageServices {
         return Optional.empty();
     }
 
-    public StringCard pullLandingPageWords(List<Section> sections) {
-        SubSection wordsSubSection = parseSubsectionData("B01").get().getSubSections().get(0);
-        String words = wordsSubSection.getContentJson();
-
-        ObjectMapper mapper = new ObjectMapper();
-        StringCard wordsContent = new StringCard();
-        try {
-            String cleanJson = mapper.readValue(words, String.class);
-            wordsContent = mapper.readValue(cleanJson, StringCard.class);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return wordsContent;
-    }
-
     public <T extends Card> CardsContent<T> pullCardsFromDB(String id,
                                                             int position,
                                                             TypeReference<CardsContent<T>> typeReference) {

@@ -33,8 +33,14 @@ INSERT INTO sections (id, page_id, title) VALUES
 -- Landing Header
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C01','B01','header_chosen_words','WORDS',
-     '{ "words": ["Financial","Advisors","Chartered","Accountants","Tax","Experts"] }');
-
+     '{ "cards": [
+         { "word": "Financial" },
+         { "word": "Advisors" },
+         { "word": "Chartered" },
+         { "word": "Accountants" },
+         { "word": "Tax" },
+         { "word": "Experts" }
+     ] }');
 -- Landing Cards
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C02','B01','landing_cards','CARD',
