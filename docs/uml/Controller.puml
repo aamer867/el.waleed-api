@@ -1,4 +1,5 @@
 @startuml
+
 abstract class BaseController {
     #subSectionService: SubSectionService
     #subSectionRepository: SubSectionRepository
@@ -6,27 +7,28 @@ abstract class BaseController {
 
     + abstract updateSection(CardsContent cardsContent, String action, SubSectionKey key): String
     + abstract getSubSection(SubSectionKey key): SubSection
-    # abstract getFolderName(): String
 }
 
 abstract class StringController {
     + updateSection(CardsContent cardsContent, String action)
 }
 
-LandingPageWords --|> CardsIMGsController
-LandingPageSection --|> StringController
-ContactUsController --|> StringController
-StringController --|> BaseController
-
 abstract class CardsIMGsController {
     + updateSection(CardsContent cardsContent, String action)
+    # abstract getFolderName(): String
 }
 
+StringController --|> BaseController
 CardsIMGsController --|> BaseController
+
+LandingPageWordsController --|> StringController
+LandingPageSectionController --|> StringController
+ContactUsController --|> StringController
 
 ClientsSecitonController --|> CardsIMGsController
 LandingPageBankLogosController --|> CardsIMGsController
 LandingPageCardsController --|> CardsIMGsController
 ServicesSectionController --|> CardsIMGsController
 AboutUsController --|> CardsIMGsController
+
 @enduml

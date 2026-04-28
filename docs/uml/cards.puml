@@ -14,13 +14,13 @@ Abstract class StringCard {
 }
 
 ' ===== Concrete Card Types =====
-class RegularCard {
+class RegularIMGCard {
     - String title;
     - String header;
     - String description;
 }
 
-class BankCard {
+class BankIMGCard {
     - String name;
     - String bankLink;
 }
@@ -65,8 +65,8 @@ class ContanctUsContent {
 IMGCard --|> Card
 StringCard --|> Card
 
-RegularCard --|> IMGCard
-BankCard --|> IMGCard
+RegularIMGCard --|> IMGCard
+BankIMGCard --|> IMGCard
 
 WordCard --|> StringCard
 ContactUsCard --|> StringCard
@@ -79,8 +79,8 @@ ContanctUsContent --|> CardsContent
 ' ===== Composition Relationships =====
 CardsContent *-- Card
 
-RegularCardsContent *-- RegularCard
-BankCardsContent *-- BankCard
+RegularCardsContent *-- RegularIMGCard
+BankCardsContent *-- BankIMGCard
 WordCardsContent *-- WordCard
 ContanctUsContent *-- ContactUsCard
 
