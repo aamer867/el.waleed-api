@@ -26,7 +26,7 @@ public abstract class CardsIMGsController extends BaseController{
         super(subSectionService, subSectionRepository, objectMapper);
     }
 
-    @Override
+
     public <T extends IMGCard> String updateSection(CardsContent<T> cardsContent,
                                                     String action,
                                                     Supplier<T> creator) throws JsonProcessingException {
@@ -62,4 +62,7 @@ public abstract class CardsIMGsController extends BaseController{
         }
         return "success";
     }
+
+    protected abstract String getFolderName();
+
 }

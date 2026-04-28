@@ -3,10 +3,7 @@ package com.el_waleed.main_website_api.services;
 import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
-import com.el_waleed.main_website_api.dto.cards.IMGCard;
-import com.el_waleed.main_website_api.dto.cards.CardsContent;
-import com.el_waleed.main_website_api.dto.cards.ContactUsCard;
-import com.el_waleed.main_website_api.dto.cards.StringCard;
+import com.el_waleed.main_website_api.dto.cards.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -71,9 +68,9 @@ public class MainPageServices {
         return wordsContent;
     }
 
-    public <T extends IMGCard> CardsContent<T> pullCardsFromDB(String id,
-                                                               int position,
-                                                               TypeReference<CardsContent<T>> typeReference) {
+    public <T extends Card> CardsContent<T> pullCardsFromDB(String id,
+                                                            int position,
+                                                            TypeReference<CardsContent<T>> typeReference) {
 
         SubSection cardsSubSection = parseSubsectionData(id).get().getSubSections().get(position);
         String cards = cardsSubSection.getContentJson();

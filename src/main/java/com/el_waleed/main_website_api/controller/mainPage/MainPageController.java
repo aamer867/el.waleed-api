@@ -6,6 +6,7 @@ import com.el_waleed.main_website_api.dto.*;
 import com.el_waleed.main_website_api.dto.cards.BankIMGCard;
 import com.el_waleed.main_website_api.dto.cards.CardsContent;
 import com.el_waleed.main_website_api.dto.cards.RegularIMGCard;
+import com.el_waleed.main_website_api.dto.cards.WordCard;
 import com.el_waleed.main_website_api.services.MainPageServices;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +39,9 @@ public class MainPageController {
 
     @GetMapping
     public String mainPage(Model model) {
-        model.addAttribute("landingPageWords", mainPageServices.pullLandingPageWords(sections));
+        model.addAttribute("landingPageWords", mainPageServices.pullCardsFromDB("B01",
+                0,
+                new TypeReference<CardsContent<WordCard>>() {}));
 
         model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB("B01",
                 1,
