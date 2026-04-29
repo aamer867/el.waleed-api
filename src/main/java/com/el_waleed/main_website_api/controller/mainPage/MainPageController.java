@@ -3,10 +3,7 @@ package com.el_waleed.main_website_api.controller.mainPage;
 import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.*;
-import com.el_waleed.main_website_api.dto.cards.BankIMGCard;
-import com.el_waleed.main_website_api.dto.cards.CardsContent;
-import com.el_waleed.main_website_api.dto.cards.RegularIMGCard;
-import com.el_waleed.main_website_api.dto.cards.WordCard;
+import com.el_waleed.main_website_api.dto.cards.*;
 import com.el_waleed.main_website_api.services.MainPageServices;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.slf4j.Slf4j;
@@ -71,7 +68,11 @@ public class MainPageController {
                 new TypeReference<CardsContent<RegularIMGCard>>() {}
         ));
 
-        model.addAttribute("constactUsSubsection", mainPageServices.pullCardsContactUsFromDB(sections));
+        model.addAttribute("constactUsSubsection", mainPageServices.pullCardsFromDB(
+                "B05",
+                0,
+                new TypeReference<CardsContent<ContactUsCard>>() {}
+        ));
         return "main-page";
     }
 

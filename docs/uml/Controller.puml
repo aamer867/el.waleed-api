@@ -22,7 +22,6 @@ StringController --|> BaseController
 CardsIMGsController --|> BaseController
 
 LandingPageWordsController --|> StringController
-LandingPageSectionController --|> StringController
 ContactUsController --|> StringController
 
 ClientsSecitonController --|> CardsIMGsController

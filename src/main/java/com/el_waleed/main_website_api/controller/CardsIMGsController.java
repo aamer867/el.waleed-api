@@ -26,7 +26,6 @@ public abstract class CardsIMGsController extends BaseController{
         super(subSectionService, subSectionRepository, objectMapper);
     }
 
-
     public <T extends IMGCard> String updateSection(CardsContent<T> cardsContent,
                                                     String action,
                                                     Supplier<T> creator) throws JsonProcessingException {

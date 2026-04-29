@@ -1,8 +1,11 @@
 package com.el_waleed.main_website_api.controller.mainPage.contactUsSection;
 
+import com.el_waleed.main_website_api.controller.StringController;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.cards.ContactUsCard;
 import com.el_waleed.main_website_api.dto.SubSection;
+import com.el_waleed.main_website_api.dto.cards.ContactUsContent;
+import com.el_waleed.main_website_api.services.SubSectionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -16,23 +19,28 @@ import java.util.Date;
 @Controller
 @Slf4j
 @RequestMapping("main-page/contact-us")
-public class ContactUsController {
-    private SubSectionRepository subSectionRepository;
-    public ContactUsController(SubSectionRepository subSectionRepository) {
-        this.subSectionRepository = subSectionRepository;
+public class ContactUsController extends StringController {
+
+    public ContactUsController(SubSectionService subSectionService,
+                               SubSectionRepository subSectionRepository,
+                               ObjectMapper objectMapper) {
+        super(subSectionService, subSectionRepository, objectMapper);
     }
-    @PostMapping
-    public String updateContactUsSection(@ModelAttribute("contactUsSection") ContactUsCard contactUsCard) throws JsonProcessingException {
-        log.info("Processing Contact Us Section Main Page");
-        ObjectMapper objectMapper = new ObjectMapper();
+
+    @Override
+    protected SubSection getSubSection() {
         SubSection subSection = new SubSection();
         subSection.setId("C10");
         subSection.setSectionId("B05");
         subSection.setTitle("contact_us_cards");
         subSection.setType("CARDS");
         subSection.setUpdatedAt(new Date());
-        subSection.setContentJson(objectMapper.writeValueAsString(contactUsCard));
-        subSectionRepository.update(subSection);
-        return "success";
+        return subSection;
+    }
+
+
+    @PostMapping
+    public String updateContactUsSection(ContactUsContent cardsContent) throws JsonProcessingException {
+        return super.updateSection(cardsContent, "no_action_param_provided", ContactUsCard::new);
     }
 }

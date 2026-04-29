@@ -7,11 +7,9 @@ import com.el_waleed.main_website_api.dto.cards.StringCard;
 import com.el_waleed.main_website_api.services.SubSectionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.Date;
 import java.util.function.Supplier;
 
 @Controller

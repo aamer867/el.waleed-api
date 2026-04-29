@@ -287,18 +287,18 @@
             th:object="${constactUsSubsection}"
     >
 
-        <h3>Address: </h3>
-        <input type="text" name="address"
-               th:field="*{address}"
-        />
-        <h3>Phone Number: </h3>
-        <input type="text" name="phoneNumber"
-               th:field="*{phone}"
-        />
-        <h3>Email: </h3>
-        <input type="text" th:field="*{email}">
-        <h3>working Hours: </h3>
-        <input type="text" th:field="*{workingHours}">
+        <h3>Address:</h3>
+        <input type="text" th:field="*{cards[0].address}" />
+
+        <h3>Phone Number:</h3>
+        <input type="text" th:field="*{cards[0].phone}" />
+
+        <h3>Email:</h3>
+        <input type="text" th:field="*{cards[0].email}" />
+
+        <h3>Working Hours:</h3>
+        <input type="text" th:field="*{cards[0].workingHours}" />
+
         <button type="submit">Submit</button>
     </form>
 </div>
