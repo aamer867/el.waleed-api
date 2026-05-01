@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Page</title>
+</head>
+<body>
+<a href="home">Main Home Editor</a>
+<link rel="stylesheet" th:href="@{/css/main-page.css}">
+<br>
+
+<div>
+    <form
+            th:action="@{/about-page/carousel-text}"
+            method="POST"
+            th:object="${carouselText}"
+    >
+        <h2>Edit Carousel Text </h2>
+        <h3>Text: </h3>
+        <input type="text"
+               th:field="*{cards[0].word}"
+        />
+        <button type="submit">Submit</button>
+    </form>
+
+    <form
+            th:action="@{/about-page/carousel-images}"
+            method="POST"
+            th:object="${carouselImages}"
+            enctype="multipart/form-data"
+    >
+        <h2>Edit Carousel Images </h2>
+        <div th:each="card, iterStat : *{cards}">
+            <span>Image: </span>
+            <input
+                    type="file"
+                    th:field="*{cards[__${iterStat.index}__].image.image}"
+            />
+            <input
+                    type="checkbox"
+                    th:field="*{cards[__${iterStat.index}__].visible}"
+            />
+            <span>Hide Image</span>
+        </div>
+        <button type="submit" name="action" value="add">Add New Image</button>
+        <button type="submit" name="action" value="submit">Submit</button>
+
+    </form>
+</div>
+
+</body>
+</html>

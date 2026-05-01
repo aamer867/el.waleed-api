@@ -28,7 +28,8 @@ public abstract class CardsIMGsController extends BaseController{
 
     public <T extends IMGCard> String updateSection(CardsContent<T> cardsContent,
                                                     String action,
-                                                    Supplier<T> creator) throws JsonProcessingException {
+                                                    Supplier<T> creator,
+                                                    String redirectionPage) throws JsonProcessingException {
         SubSection subSection = getSubSection();
 
         for(T card : cardsContent.getCards()){
@@ -41,7 +42,7 @@ public abstract class CardsIMGsController extends BaseController{
             cardsContent.getCards().add(creator.get());
             subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
             subSectionRepository.update(subSection);
-            return "redirect:/main-page";
+            return "redirect:/"+redirectionPage;
         } else {
             cardsContent.getCards().removeIf(card -> card.isVisible());
             for(IMGCard card : cardsContent.getCards()) {

@@ -152,8 +152,8 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C11','B06','carousel_text','TEXT',
      '{ "cards": [
-         { "word": "We are a leading advisory firm specializing in tax planning and compliance." },
-         }');
+         { "word": "We are a leading advisory firm specializing in tax planning and compliance." }
+     ]}');
 
 -- Carousel Images
 INSERT INTO subsections (id, section_id, title, type, data) VALUES

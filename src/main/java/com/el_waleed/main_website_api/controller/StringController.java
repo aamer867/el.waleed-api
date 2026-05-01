@@ -24,7 +24,8 @@ public abstract class StringController extends BaseController{
 
     public <T extends StringCard> String updateSection(CardsContent<T> cardsContent,
                                                        String action,
-                                                       Supplier<T> creator) throws JsonProcessingException {
+                                                       Supplier<T> creator,
+                                                       String redirectionPage) throws JsonProcessingException {
 
         SubSection subSection = getSubSection();
 
@@ -32,7 +33,7 @@ public abstract class StringController extends BaseController{
             cardsContent.getCards().add(creator.get());
             subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
             subSectionRepository.update(subSection);
-            return "redirect:/main-page";
+            return "redirect:/"+redirectionPage;
         }
         else {
             cardsContent.getCards().removeIf(StringCard::isVisible);

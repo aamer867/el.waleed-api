@@ -41,6 +41,6 @@ public class ContactUsController extends StringController {
 
     @PostMapping
     public String updateContactUsSection(ContactUsContent cardsContent) throws JsonProcessingException {
-        return super.updateSection(cardsContent, "no_action_param_provided", ContactUsCard::new);
+        return super.updateSection(cardsContent, "no_action_param_provided", ContactUsCard::new, "main-page");
     }
 }

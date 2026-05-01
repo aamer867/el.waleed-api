@@ -46,7 +46,7 @@ public class LandingPageBankLogosController extends CardsIMGsController {
     @PostMapping
     public String updateLandingPageBankLogos(@ModelAttribute("landingPageBankLogos") BankCardsContent banksLogosContent,
                                              @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(banksLogosContent, action, BankIMGCard::new);
+        return super.updateSection(banksLogosContent, action, BankIMGCard::new, "main-page");
     }
 
 }
