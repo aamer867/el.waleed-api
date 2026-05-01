@@ -17,7 +17,7 @@ INSERT INTO pages (id, title, slug) VALUES
                                         ('A05', 'Clients', 'clients_page');
 
 -- =========================
--- SECTIONS
+-- SECTIONS Main Page
 -- =========================
 INSERT INTO sections (id, page_id, title) VALUES
                                               ('B01', 'A01', 'landing_page'),
@@ -27,7 +27,15 @@ INSERT INTO sections (id, page_id, title) VALUES
                                               ('B05', 'A01', 'contact_part');
 
 -- =========================
--- subsections
+-- SECTIONS About Page
+-- =========================
+
+INSERT INTO sections (id, page_id, title) VALUES
+                                              ('B06', 'A02', 'carousel'),
+                                              ('B07', 'A02', 'about_us');
+
+-- =========================
+-- subsections Main Page
 -- =========================
 
 -- Landing Header
@@ -134,4 +142,53 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
              "phone": "+1234567890"
          }
      ] }');
-    -- SET FOREIGN_KEY_CHECKS=1;
+
+
+-- =========================
+-- subsections About Page
+-- =========================
+
+-- Carousel Text
+INSERT INTO subsections (id, section_id, title, type, data) VALUES
+    ('C11','B06','carousel_text','TEXT',
+     '{ "cards": [
+         { "word": "We are a leading advisory firm specializing in tax planning and compliance." },
+         }');
+
+-- Carousel Images
+INSERT INTO subsections (id, section_id, title, type, data) VALUES
+    ('C12', 'B06', 'carousel_images', 'IMG',
+     '{ "cards": [
+         { "image_url": "/resources/static/images/mission.jpg" },
+         { "image_url": "/resources/static/images/vision.jpg" },
+         { "image_url": "/resources/static/images/values.jpg" },
+         { "image_url": "/resources/static/images/goals.jpg" }
+     ]}');
+
+-- About Us Data
+INSERT INTO subsections (id, section_id, title, type, data) VALUES
+    ('C13', 'B07', 'about_us_data', 'IMG',
+     '{ "cards": [
+         {
+             "image_url": "/resources/static/images/mission.jpg",
+             "header": "Our Mission",
+             "description": "To deliver meaningful solutions that create value and impact for our clients and society."
+         },
+         {
+             "image_url": "/resources/static/images/vision.jpg",
+             "header": "Our Vision",
+             "description": "To be a trusted leader recognized for innovation, excellence, and long-term impact."
+         },
+         {
+             "image_url": "/resources/static/images/values.jpg",
+             "header": "Our Values",
+             "description": "Integrity, quality, and commitment guide every decision we make."
+         },
+         {
+             "image_url": "/resources/static/images/goals.jpg",
+             "header": "Our Goals",
+             "description": "To grow sustainably, innovate continuously, and expand our positive impact."
+         }
+     ]}');
+
+-- SET FOREIGN_KEY_CHECKS=1;
