@@ -69,18 +69,4 @@ public class MainPageServices {
         }
         return cardsContent;
     }
-
-    public ContactUsCard pullCardsContactUsFromDB(List<Section> sections) {
-        SubSection cardsSubSection = parseSubsectionData("B05").get().getSubSections().get(0);
-        String cards = cardsSubSection.getContentJson();
-        ObjectMapper mapper = new ObjectMapper();
-        ContactUsCard cardsContent = new ContactUsCard();
-        try {
-            String cleanJson = mapper.readValue(cards, String.class);
-            cardsContent = mapper.readValue(cleanJson, ContactUsCard.class);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return cardsContent;
-    }
 }
