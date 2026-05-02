@@ -34,6 +34,11 @@ INSERT INTO sections (id, page_id, title) VALUES
                                               ('B06', 'A02', 'carousel'),
                                               ('B07', 'A02', 'about_us');
 
+INSERT INTO sections (id, page_id, title) VALUES
+                                              ('B08', 'A03', 'services_header'),
+                                              ('B09', 'A03', 'services_body');
+
+
 -- =========================
 -- subsections Main Page
 -- =========================
@@ -56,7 +61,6 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
          { "title": "card01", "image_url": "/sources/static/images/card01.jpg", "header": "Feasibility Study", "description": "We will conduct a feasibility study to determine the feasibility of your business." },
          { "title": "card02", "image_url": "/sources/static/images/card02.jpg", "header": "Taxes", "description": "Let us do it" }
      ]}');
-
 -- Bank Logos
 INSERT INTO subsections (id, section_id, title, type, data) VALUES
     ('C03','B01','bank_logos','IMG',
@@ -190,5 +194,30 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
              "description": "To grow sustainably, innovate continuously, and expand our positive impact."
          }
      ]}');
+
+
+
+-- =========================
+-- subsections Services Page
+-- =========================
+
+-- Services Header
+INSERT INTO subsections (id, section_id, title, type, data) VALUES
+    ('C14', 'B08', 'services_header', 'TEXT',
+     '{ "cards": [
+         { "word": "Our Services" },
+         { "word": "We are a leading advisory firm specializing in tax planning and compliance." }
+     ] }');
+-- Services Body
+INSERT INTO subsections (id, section_id, title, type, data) VALUES
+    ('C15', 'B09', 'services_body', 'CARD',
+     '{
+       "cards": [
+         { "title": "card01", "image_url": "/resources/static/images/service01.jpg", "header": "Feasibility Studies", "description": "We evaluate business ideas and projects." },
+         { "title": "card02", "image_url": "/resources/static/images/service02.jpg", "header": "Tax Advisory", "description": "Strategic tax planning and compliance services." },
+         { "title": "card03", "image_url": "/resources/static/images/service03.jpg", "header": "Financial Consulting", "description": "Tailored financial solutions." },
+         { "title": "card04", "image_url": "/resources/static/images/service04.jpg", "header": "Audit & Assurance", "description": "Independent audit services." }
+       ]
+     }');
 
 -- SET FOREIGN_KEY_CHECKS=1;
