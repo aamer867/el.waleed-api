@@ -195,8 +195,6 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
          }
      ]}');
 
-
-
 -- =========================
 -- subsections Services Page
 -- =========================

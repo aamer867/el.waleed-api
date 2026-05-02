@@ -5,6 +5,57 @@
     <title>Services Page</title>
 </head>
 <body>
+    <a href="home">Main Home Editor</a>
+    <link rel="stylesheet" th:href="@{/css/main-page.css}">
+    <br>
+    <div>
+        <form
+                th:action="@{/services-page/service-section}"
+                method="POST"
+                th:object="${servicesHeader}"
+        >
+            <h2>Edit Services Header </h2>
+            <h3>Title: </h3>
+            <input type="text" name="title"
+                   th:field="*{cards[0].word}"
+            />
+            <h3>Description: </h3>
+            <input type="text"
+                   th:field="*{cards[1].word}"
+            />
+            <button type="submit">Submit</button>
+        </form>
 
+        <form
+                th:action="@{/services-page/services-body}"
+                method="POST"
+                th:object="${servicesBody}"
+                enctype="multipart/form-data"
+        >
+            <h2>Edit Services Body </h2>
+            <div th:each="card, iterStat : *{cards}">
+                <h3>Title: </h3>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].title}"
+                />
+                <h3>Description: </h3>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].description}"
+                />
+                <h3>Image Upload: </h3>
+                <input type="file"
+                       th:field="*{cards[__${iterStat.index}__].image.image}"
+                />
+                <input
+                        type="checkbox"
+                        th:field="*{cards[__${iterStat.index}__].visible}"
+                />
+                <span>Hide Image</span>
+            </div>
+            <button type="submit" name="action" value="add">Add New Image</button>
+            <button type="submit" name="action" value="submit">Submit</button>
+        </form>
+
+    </div>
 </body>
 </html>
