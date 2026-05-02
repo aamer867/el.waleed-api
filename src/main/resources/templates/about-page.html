@@ -44,7 +44,39 @@
         </div>
         <button type="submit" name="action" value="add">Add New Image</button>
         <button type="submit" name="action" value="submit">Submit</button>
+    </form>
 
+    <form
+            th:action="@{/about-page/about-us-data}"
+            method="POST"
+            th:object="${aboutUsData}"
+            enctype="multipart/form-data"
+    >
+        <h2>Edit About Us Data </h2>
+        <div th:each="card, iterStat : *{cards}">
+            <span>Header: </span>
+            <input
+                    type="text"
+                    th:field="*{cards[__${iterStat.index}__].header}"
+            />
+            <span>Description: </span>
+            <input
+                    type="text"
+                    th:field="*{cards[__${iterStat.index}__].description}"
+            />
+            <span>Image Upload: </span>
+            <input
+                    type="file"
+                    th:field="*{cards[__${iterStat.index}__].image.image}"
+            />
+            <input
+                    type="checkbox"
+                    th:field="*{cards[__${iterStat.index}__].visible}"
+            />
+            <span>Hide Card</span>
+        </div>
+        <button type="submit" name="action" value="add">Add New Card</button>
+        <button type="submit" name="action" value="submit">Submit</button>
     </form>
 </div>
 
