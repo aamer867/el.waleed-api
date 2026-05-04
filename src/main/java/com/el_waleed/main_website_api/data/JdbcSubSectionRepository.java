@@ -42,11 +42,12 @@ public class JdbcSubSectionRepository implements SubSectionRepository{
     @Override
     public SubSection update(SubSection subSection) {
         int rowsUpdated = jdbcTemplate.update(
-                "UPDATE subsections SET title=?, type=?, data=?, updated_at=?, position=? " +
+                "UPDATE subsections SET title=?, type=?, data=?, data_ar=?, updated_at=?, position=? " +
                         "WHERE id=? AND section_id=?",
                 subSection.getTitle(),
                 subSection.getType(),
                 subSection.getContentJson(), // JSON as string
+                subSection.getArContentJson(),
                 subSection.getUpdatedAt(),
                 subSection.getPosition(),
                 subSection.getId(),
@@ -71,6 +72,7 @@ public class JdbcSubSectionRepository implements SubSectionRepository{
         subSection.setTitle(row.getString("title"));
         subSection.setType(row.getString("type"));
         subSection.setContentJson(row.getString("data")); // or JSON handling
+        subSection.setArContentJson(row.getString("data_ar"));
         subSection.setUpdatedAt(row.getTimestamp("updated_at"));
         subSection.setPosition(row.getInt("position"));
         return subSection;

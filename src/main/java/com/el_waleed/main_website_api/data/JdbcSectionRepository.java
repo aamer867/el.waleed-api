@@ -45,6 +45,8 @@ public class JdbcSectionRepository implements SectionRepository{
         section.setTitle(row.getString("title"));
         section.setHeader(row.getString("header"));
         section.setDescription(row.getString("description"));
+        section.setHeaderAr(row.getString("header_ar"));
+        section.setDescriptionAr(row.getString("description_ar"));
         section.setUpdatedAt(row.getDate("updated_at"));
         return section;
     }
@@ -52,12 +54,14 @@ public class JdbcSectionRepository implements SectionRepository{
     @Override
     public Section save(Section section) {
         jdbcTemplate.update(
-                "INSERT INTO sections (id, page_id, title, header, description, updated_at) VALUES (?, ?, ?, ?, ?, ?)",
+                "INSERT INTO sections (id, page_id, title, header, description, header_ar, description_ar, updated_at) VALUES (?, ?, ?, ?, ?, ?)",
                 section.getId(),
                 section.getPageId(),
                 section.getTitle(),
                 section.getHeader(),
                 section.getDescription(),
+                section.getHeaderAr(),
+                section.getDescriptionAr(),
                 section.getUpdatedAt()
         );
         return section;
@@ -66,10 +70,12 @@ public class JdbcSectionRepository implements SectionRepository{
     @Override
     public Section update(Section section) {
         int rowsUpdatedCount = jdbcTemplate.update(
-                "UPDATE sections SET title=?, header=?, description=?, updated_at=? WHERE id=? AND page_id=?",
+                "UPDATE sections SET title=?, header=?, description=?, header_ar, description_ar, updated_at=? WHERE id=? AND page_id=?",
                 section.getTitle(),
                 section.getHeader(),
                 section.getDescription(),
+                section.getHeaderAr(),
+                section.getDescriptionAr(),
                 section.getUpdatedAt(),
                 section.getId(),
                 section.getPageId()
@@ -80,7 +86,5 @@ public class JdbcSectionRepository implements SectionRepository{
         }
         return section;
     }
-
-
 
 }

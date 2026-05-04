@@ -20,6 +20,8 @@ public class Section {
     private String title;
     private String header;
     private String description;
+    private String headerAr;
+    private String descriptionAr;
     private Date updatedAt;
 
     private List<SubSection> subSections = new ArrayList<>();
