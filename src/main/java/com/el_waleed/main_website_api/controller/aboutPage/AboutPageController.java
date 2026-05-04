@@ -48,6 +48,21 @@ public class AboutPageController {
                 new TypeReference<CardsContent<RegularIMGCard>>() {},
                 false));
 
+        model.addAttribute("carouselTextAr", mainPageServices.pullCardsFromDB("B06",
+                0,
+                new TypeReference<CardsContent<WordCard>>() {},
+                true));
+
+        model.addAttribute("carouselImagesAr", mainPageServices.pullCardsFromDB("B06",
+                1,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                true));
+
+        model.addAttribute("aboutUsDataAr", mainPageServices.pullCardsFromDB("B07",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                true));
+        
         return "about-page";
     }
 

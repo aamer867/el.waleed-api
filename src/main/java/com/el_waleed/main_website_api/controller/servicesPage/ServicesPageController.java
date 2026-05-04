@@ -36,6 +36,16 @@ public class ServicesPageController {
                 new TypeReference<CardsContent<RegularIMGCard>>() {},
                 false));
 
+        model.addAttribute("servicesHeaderAr", mainPageServices.pullCardsFromDB("B08",
+                0,
+                new TypeReference<CardsContent<WordCard>>() {},
+                true));
+
+        model.addAttribute("servicesBodyAr", mainPageServices.pullCardsFromDB("B09",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                true));
+
         return "services-page";
     }
 }
