@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 
@@ -36,8 +37,9 @@ public class ServicesHeaderController extends StringController {
     }
 
     @PostMapping
-    public String updateServicesHeader(WordCardsContent cardsContent) throws JsonProcessingException {
-        return super.updateSection(cardsContent, "no_action_param_provided", WordCard::new, "services-page");
+    public String updateServicesHeader(WordCardsContent cardsContent,
+                                       @RequestParam(name = "lang", required = false) String lang) throws JsonProcessingException {
+        return super.updateSection(cardsContent, "no_action_param_provided", WordCard::new, "services-page", lang);
     }
 
 

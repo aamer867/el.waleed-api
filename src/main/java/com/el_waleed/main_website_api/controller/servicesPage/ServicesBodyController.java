@@ -45,8 +45,9 @@ public class ServicesBodyController extends CardsIMGsController {
 
     @PostMapping
     public String updateServicesBody(RegularCardsContent cardsContent,
-                                     @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(cardsContent, action, RegularIMGCard::new, "services-page");
+                                     @RequestParam String action,
+                                     @RequestParam String lang) throws JsonProcessingException {
+        return super.updateSection(cardsContent, action, RegularIMGCard::new, "services-page", lang);
     }
 
 

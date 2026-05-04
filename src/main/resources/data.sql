@@ -94,7 +94,23 @@ INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
          "link": "https://www.mizrahi-tefahot.co.il"
        }
      ]}',
-     NULL);
+     '{"cards":[
+       {
+         "name": "bank_misr",
+         "image_url": "/sources/static/images/bank_misr.png",
+         "link": "https://www.banquemisr.com"
+       },
+       {
+         "name": "bank_ahly",
+         "image_url": "/sources/static/images/bank_ahly.png",
+         "link": "https://www.nbe.com.eg"
+       },
+       {
+         "name": "bank_mizrahi",
+         "image_url": "/sources/static/images/bank_mizrahi.png",
+         "link": "https://www.mizrahi-tefahot.co.il"
+       }
+     ]}');
 -- Mission Vision Values
 INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
     ('C04','B02','mission_vision_values','CARD',
@@ -235,7 +251,12 @@ INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
          { "image_url": "/resources/static/images/values.jpg" },
          { "image_url": "/resources/static/images/goals.jpg" }
      ]}',
-     NULL);
+     '{ "cards": [
+         { "image_url": "/resources/static/images/mission.jpg" },
+         { "image_url": "/resources/static/images/vision.jpg" },
+         { "image_url": "/resources/static/images/values.jpg" },
+         { "image_url": "/resources/static/images/goals.jpg" }
+     ]}');
 
 -- About Us Data
 INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES

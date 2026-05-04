@@ -29,7 +29,8 @@ public abstract class CardsIMGsController extends BaseController{
     public <T extends IMGCard> String updateSection(CardsContent<T> cardsContent,
                                                     String action,
                                                     Supplier<T> creator,
-                                                    String redirectionPage) throws JsonProcessingException {
+                                                    String redirectionPage,
+                                                    String lang) throws JsonProcessingException {
         SubSection subSection = getSubSection();
 
         for(T card : cardsContent.getCards()){
@@ -40,7 +41,11 @@ public abstract class CardsIMGsController extends BaseController{
 
         if(action.equals("add")) {
             cardsContent.getCards().add(creator.get());
-            subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
+            if(lang.equals("ar")) {
+                subSection.setArContentJson(objectMapper.writeValueAsString(cardsContent));
+            } else {
+                subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
+            }
             subSectionRepository.update(subSection);
             return "redirect:/"+redirectionPage;
         } else {
@@ -57,7 +62,11 @@ public abstract class CardsIMGsController extends BaseController{
                     e.printStackTrace();
                 }
             }
-            subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
+            if(lang.equals("ar")) {
+                subSection.setArContentJson(objectMapper.writeValueAsString(cardsContent));
+            } else {
+                subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
+            }
             subSectionRepository.update(subSection);
         }
         return "success";

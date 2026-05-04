@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 
@@ -40,7 +41,8 @@ public class ContactUsController extends StringController {
 
 
     @PostMapping
-    public String updateContactUsSection(ContactUsContent cardsContent) throws JsonProcessingException {
-        return super.updateSection(cardsContent, "no_action_param_provided", ContactUsCard::new, "main-page");
+    public String updateContactUsSection(ContactUsContent cardsContent,
+                                         @RequestParam String lang) throws JsonProcessingException {
+        return super.updateSection(cardsContent, "no_action_param_provided", ContactUsCard::new, "main-page", lang);
     }
 }

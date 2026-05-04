@@ -42,9 +42,10 @@ public class LandingPageWordsController extends StringController {
 
     @PostMapping
     public String updateLandingPageWords(WordCardsContent cardsContent,
-                                         @RequestParam(name = "action", required = false) String action
+                                         @RequestParam(name = "action", required = false) String action,
+                                         @RequestParam(name = "lang", required = false) String lang
     ) throws JsonProcessingException {
-        return super.updateSection(cardsContent, action, WordCard::new, "main-page");
+        return super.updateSection(cardsContent, action, WordCard::new, "main-page", lang);
     }
 
 }

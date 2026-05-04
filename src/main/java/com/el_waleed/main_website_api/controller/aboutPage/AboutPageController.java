@@ -62,7 +62,7 @@ public class AboutPageController {
                 0,
                 new TypeReference<CardsContent<RegularIMGCard>>() {},
                 true));
-        
+
         return "about-page";
     }
 

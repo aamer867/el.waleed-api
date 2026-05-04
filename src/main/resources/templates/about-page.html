@@ -20,8 +20,25 @@
         <input type="text"
                th:field="*{cards[0].word}"
         />
-        <button type="submit">Submit</button>
+        <button name="lang" value="en" type="submit">Submit</button>
     </form>
+
+    <div dir="rtl" lang="ar">
+        <form
+                th:action="@{/about-page/carousel-text}"
+                method="POST"
+                th:object="${carouselTextAr}"
+        >
+            <h2>تعديل نص السلايدر</h2>
+            <h3>النص:</h3>
+
+            <input type="text"
+                   th:field="*{cards[0].word}"
+            />
+
+            <button name="lang" value="ar" type="submit">إرسال</button>
+        </form>
+    </div>
 
     <form
             th:action="@{/about-page/carousel-images}"

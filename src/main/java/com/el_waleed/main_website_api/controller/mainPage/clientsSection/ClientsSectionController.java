@@ -48,7 +48,8 @@ public class ClientsSectionController extends CardsIMGsController {
     @PostMapping
     public String updateSection(
             RegularCardsContent cardsContent,
-            @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(cardsContent, action, RegularIMGCard::new, "main-page");
+            @RequestParam String action,
+            @RequestParam String lang) throws JsonProcessingException {
+        return super.updateSection(cardsContent, action, RegularIMGCard::new, "main-page", lang);
     }
 }

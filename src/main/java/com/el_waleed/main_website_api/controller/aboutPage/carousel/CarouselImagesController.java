@@ -48,8 +48,11 @@ public class CarouselImagesController extends CardsIMGsController {
     }
 
     @PostMapping
-    public String updateCarouselImagesSubSection(RegularCardsContent cardsContent, @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(cardsContent, action, RegularIMGCard::new, "about-page");
+    public String updateCarouselImagesSubSection(RegularCardsContent cardsContent,
+                                                 @RequestParam String action,
+                                                 @RequestParam(name = "lang", required = false) String lang)
+            throws JsonProcessingException {
+        return super.updateSection(cardsContent, action, RegularIMGCard::new, "about-page", lang);
     }
 
 }

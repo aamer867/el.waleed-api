@@ -25,19 +25,28 @@ public abstract class StringController extends BaseController{
     public <T extends StringCard> String updateSection(CardsContent<T> cardsContent,
                                                        String action,
                                                        Supplier<T> creator,
-                                                       String redirectionPage) throws JsonProcessingException {
+                                                       String redirectionPage,
+                                                       String lang) throws JsonProcessingException {
 
         SubSection subSection = getSubSection();
 
         if(action.equals("add")) {
             cardsContent.getCards().add(creator.get());
-            subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
+            if(lang.equals("ar")) {
+                subSection.setArContentJson(objectMapper.writeValueAsString(cardsContent));
+            } else {
+                subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
+            }
             subSectionRepository.update(subSection);
             return "redirect:/"+redirectionPage;
         }
         else {
             cardsContent.getCards().removeIf(StringCard::isVisible);
-            subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
+            if(lang.equals("ar")) {
+                subSection.setArContentJson(objectMapper.writeValueAsString(cardsContent));
+            } else {
+                subSection.setContentJson(objectMapper.writeValueAsString(cardsContent));
+            }
             subSectionRepository.update(subSection);
             return "success";
         }

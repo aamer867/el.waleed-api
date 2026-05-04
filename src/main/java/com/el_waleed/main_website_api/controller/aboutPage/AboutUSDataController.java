@@ -42,7 +42,10 @@ public class AboutUSDataController extends CardsIMGsController {
     }
 
     @PostMapping
-    public String updateAboutUsData(RegularCardsContent cardsContent, @RequestParam String action) throws JsonProcessingException {
-        return super.updateSection(cardsContent, action, RegularIMGCard::new, "about-page");
+    public String updateAboutUsData(RegularCardsContent cardsContent,
+                                    @RequestParam String action,
+                                    @RequestParam(name = "lang", required = false) String lang)
+            throws JsonProcessingException {
+        return super.updateSection(cardsContent, action, RegularIMGCard::new, "about-page", lang);
     }
 }
