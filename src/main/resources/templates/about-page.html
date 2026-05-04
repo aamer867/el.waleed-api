@@ -63,6 +63,36 @@
         <button type="submit" name="action" value="submit">Submit</button>
     </form>
 
+    <div dir="rtl" lang="ar">
+
+        <form
+                th:action="@{/about-page/carousel-images}"
+                method="POST"
+                th:object="${carouselImagesAr}"
+                enctype="multipart/form-data"
+        >
+            <h2>تعديل صور السلايدر</h2>
+
+            <div th:each="card, iterStat : *{cards}">
+                <span>الصورة: </span>
+                <input
+                        type="file"
+                        th:field="*{cards[__${iterStat.index}__].image.image}"
+                />
+                <input
+                        type="checkbox"
+                        th:field="*{cards[__${iterStat.index}__].visible}"
+                />
+                <span>إخفاء الصورة</span>
+            </div>
+
+            <button type="submit" name="action" value="add">إضافة صورة</button>
+            <button type="submit" name="action" value="submit">إرسال</button>
+            <input type="hidden" name="lang" value="ar">
+        </form>
+
+    </div>
+
     <form
             th:action="@{/about-page/about-us-data}"
             method="POST"
@@ -95,6 +125,44 @@
         <button type="submit" name="action" value="add">Add New Card</button>
         <button type="submit" name="action" value="submit">Submit</button>
     </form>
+    <div dir="rtl" lang="ar">
+
+        <form
+                th:action="@{/about-page/about-us-data}"
+                method="POST"
+                th:object="${aboutUsDataAr}"
+                enctype="multipart/form-data"
+        >
+            <h2>تعديل بيانات من نحن</h2>
+
+            <div th:each="card, iterStat : *{cards}">
+                <span>العنوان: </span>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].header}"
+                />
+
+                <span>الوصف: </span>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].description}"
+                />
+
+                <span>رفع صورة: </span>
+                <input type="file"
+                       th:field="*{cards[__${iterStat.index}__].image.image}"
+                />
+
+                <input type="checkbox"
+                       th:field="*{cards[__${iterStat.index}__].visible}"
+                />
+                <span>إخفاء البطاقة</span>
+            </div>
+
+            <button type="submit" name="action" value="add">إضافة بطاقة</button>
+            <button type="submit" name="action" value="submit">إرسال</button>
+            <input type="hidden" name="lang" value="ar">
+        </form>
+
+    </div>
 </div>
 
 </body>

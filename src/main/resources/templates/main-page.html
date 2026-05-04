@@ -33,28 +33,55 @@
         <button type="submit">Submit</button>
     </form>
 
+    <!-- ================= WORDS (EN) ================= -->
     <form
             th:action="@{/main-page/landing-page-section/update-words}"
             method="POST"
             th:object="${landingPageWords}"
     >
-        <h3>Edit the words: </h3>
+        <h3>Edit the words:</h3>
+
         <div th:each="card, iterStat : *{cards}">
-            <input
-                    type="text"
-                    th:field="*{cards[__${iterStat.index}__].word}"
-            />
-            <input
-                type="checkbox"
-                th:field="*{cards[__${iterStat.index}__].visible}"
-            />
+            <input type="text"
+                   th:field="*{cards[__${iterStat.index}__].word}" />
+
+            <input type="checkbox"
+                   th:field="*{cards[__${iterStat.index}__].visible}" />
             <span>Hide Word</span>
         </div>
+
         <button type="submit" name="action" value="add">Add New Word</button>
         <button type="submit" name="action" value="submit">Submit</button>
-
     </form>
 
+    <!-- ================= WORDS (AR) ================= -->
+    <div dir="rtl" lang="ar">
+        <form
+                th:action="@{/main-page/landing-page-section/update-words}"
+                method="POST"
+                th:object="${landingPageWordsAr}"
+        >
+            <h3>تعديل الكلمات</h3>
+
+            <div th:each="card, iterStat : *{cards}">
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].word}" />
+
+                <input type="checkbox"
+                       th:field="*{cards[__${iterStat.index}__].visible}" />
+                <span>إخفاء الكلمة</span>
+            </div>
+
+            <button type="submit" name="action" value="add">إضافة كلمة</button>
+            <button type="submit" name="action" value="submit">إرسال</button>
+
+            <input type="hidden" name="lang" value="ar">
+        </form>
+    </div>
+
+    <hr>
+
+    <!-- ================= CARDS (EN) ================= -->
     <form
             th:action="@{/main-page/landing-page-section/update-cards}"
             method="POST"
@@ -62,32 +89,64 @@
             enctype="multipart/form-data"
     >
         <h3>Edit the Cards:</h3>
+
         <div th:each="card, iterStat : *{cards}">
-            <span>Header: </span>
-            <input
-                    type="text"
-                    th:field="*{cards[__${iterStat.index}__].header}"
-            />
-            <span>Description: </span>
-            <input
-                    type="text"
-                    th:field="*{cards[__${iterStat.index}__].description}"
-            />
-            <span>Image Upload: </span>
-            <input
-                    type="file"
-                    th:field="*{cards[__${iterStat.index}__].image.image}"
-            />
-            <input
-                type="checkbox"
-                th:field="*{cards[__${iterStat.index}__].visible}"
-            />
+            <span>Header:</span>
+            <input type="text"
+                   th:field="*{cards[__${iterStat.index}__].header}" />
+
+            <span>Description:</span>
+            <input type="text"
+                   th:field="*{cards[__${iterStat.index}__].description}" />
+
+            <span>Image Upload:</span>
+            <input type="file"
+                   th:field="*{cards[__${iterStat.index}__].image.image}" />
+
+            <input type="checkbox"
+                   th:field="*{cards[__${iterStat.index}__].visible}" />
             <span>Hide Card</span>
         </div>
+
         <button type="submit" name="action" value="add">Add New Card</button>
         <button type="submit" name="action" value="submit">Submit</button>
     </form>
 
+    <!-- ================= CARDS (AR) ================= -->
+    <div dir="rtl" lang="ar">
+        <form
+                th:action="@{/main-page/landing-page-section/update-cards}"
+                method="POST"
+                th:object="${landingPageCardsAr}"
+                enctype="multipart/form-data"
+        >
+            <h3>تعديل البطاقات</h3>
+
+            <div th:each="card, iterStat : *{cards}">
+                <span>العنوان:</span>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].header}" />
+
+                <span>الوصف:</span>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].description}" />
+
+                <span>رفع صورة:</span>
+                <input type="file"
+                       th:field="*{cards[__${iterStat.index}__].image.image}" />
+
+                <input type="checkbox"
+                       th:field="*{cards[__${iterStat.index}__].visible}" />
+                <span>إخفاء البطاقة</span>
+            </div>
+
+            <button type="submit" name="action" value="add">إضافة بطاقة</button>
+            <button type="submit" name="action" value="submit">إرسال</button>
+
+            <input type="hidden" name="lang" value="ar">
+        </form>
+    </div>
+<!-- TILL HERE -->
     <form
             th:action="@{/main-page/landing-page-section/update-bank-logos}"
             method="POST"
