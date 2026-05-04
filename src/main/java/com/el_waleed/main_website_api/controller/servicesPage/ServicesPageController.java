@@ -28,11 +28,13 @@ public class ServicesPageController {
 
         model.addAttribute("servicesHeader", mainPageServices.pullCardsFromDB("B08",
                 0,
-                new TypeReference<CardsContent<WordCard>>() {}));
+                new TypeReference<CardsContent<WordCard>>() {},
+                false));
 
         model.addAttribute("servicesBody", mainPageServices.pullCardsFromDB("B09",
                 0,
-                new TypeReference<CardsContent<RegularIMGCard>>() {}));
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                false));
 
         return "services-page";
     }

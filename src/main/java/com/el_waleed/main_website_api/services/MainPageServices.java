@@ -55,10 +55,17 @@ public class MainPageServices {
 
     public <T extends Card> CardsContent<T> pullCardsFromDB(String id,
                                                             int position,
-                                                            TypeReference<CardsContent<T>> typeReference) {
+                                                            TypeReference<CardsContent<T>> typeReference,
+                                                            boolean isAr) {
 
+        String cards;
         SubSection cardsSubSection = parseSubsectionData(id).get().getSubSections().get(position);
-        String cards = cardsSubSection.getContentJson();
+        if(!isAr) {
+            cards = cardsSubSection.getContentJson();
+        } else {
+            cards = cardsSubSection.getArContentJson();
+        }
+
         CardsContent<T> cardsContent = new CardsContent<>();
 
         try {
@@ -69,4 +76,5 @@ public class MainPageServices {
         }
         return cardsContent;
     }
+
 }

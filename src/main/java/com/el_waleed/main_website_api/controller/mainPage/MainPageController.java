@@ -38,41 +38,84 @@ public class MainPageController {
     public String mainPage(Model model) {
         model.addAttribute("landingPageWords", mainPageServices.pullCardsFromDB("B01",
                 0,
-                new TypeReference<CardsContent<WordCard>>() {}));
+                new TypeReference<CardsContent<WordCard>>() {}, false)
+        );
 
         model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB("B01",
                 1,
-                new TypeReference<CardsContent<RegularIMGCard>>() {}));
+                new TypeReference<CardsContent<RegularIMGCard>>() {}, false)
+        );
 
         model.addAttribute("landingPageBankLogos", mainPageServices.pullCardsFromDB(
                 "B01",
                 2,
-                new TypeReference<CardsContent<BankIMGCard>>() {}
-        ));
+                new TypeReference<CardsContent<BankIMGCard>>() {}, false)
+        );
 
         model.addAttribute("aboutUsSection", mainPageServices.pullCardsFromDB(
                 "B02",
                 0,
-                new TypeReference<CardsContent<RegularIMGCard>>() {}
-        ));
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                false));
 
         model.addAttribute("serviceSubSection", mainPageServices.pullCardsFromDB(
                 "B03",
                 0,
-                new TypeReference<CardsContent<RegularIMGCard>>() {}
-        ));
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                false));
 
         model.addAttribute("clientsSection", mainPageServices.pullCardsFromDB(
                 "B04",
                 0,
-                new TypeReference<CardsContent<RegularIMGCard>>() {}
-        ));
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                false));
 
         model.addAttribute("constactUsSubsection", mainPageServices.pullCardsFromDB(
                 "B05",
                 0,
-                new TypeReference<CardsContent<ContactUsCard>>() {}
-        ));
+                new TypeReference<CardsContent<ContactUsCard>>() {},
+                false));
+
+        model.addAttribute("landingPageWordsAr", mainPageServices.pullCardsFromDB("B01",
+                0,
+                new TypeReference<CardsContent<WordCard>>() {}, true)
+        );
+
+        model.addAttribute("landingPageCardsAr", mainPageServices.pullCardsFromDB("B01",
+                1,
+                new TypeReference<CardsContent<RegularIMGCard>>() {}, true)
+        );
+
+        model.addAttribute("landingPageBankLogosAr", mainPageServices.pullCardsFromDB(
+                "B01",
+                2,
+                new TypeReference<CardsContent<BankIMGCard>>() {}, true)
+        );
+
+        model.addAttribute("aboutUsSectionAr", mainPageServices.pullCardsFromDB(
+                "B02",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                true));
+
+        model.addAttribute("serviceSubSectionAr", mainPageServices.pullCardsFromDB(
+                "B03",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                true));
+
+        model.addAttribute("clientsSectionAr", mainPageServices.pullCardsFromDB(
+                "B04",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                true));
+
+        model.addAttribute("contactUsSubsectionAr", mainPageServices.pullCardsFromDB(
+                "B05",
+                0,
+                new TypeReference<CardsContent<ContactUsCard>>() {},
+                true));
+
         return "main-page";
     }
 

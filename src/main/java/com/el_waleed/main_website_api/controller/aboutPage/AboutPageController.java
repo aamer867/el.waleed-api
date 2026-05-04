@@ -35,15 +35,18 @@ public class AboutPageController {
 
         model.addAttribute("carouselText", mainPageServices.pullCardsFromDB("B06",
                 0,
-                new TypeReference<CardsContent<WordCard>>() {}));
+                new TypeReference<CardsContent<WordCard>>() {},
+                false));
 
         model.addAttribute("carouselImages", mainPageServices.pullCardsFromDB("B06",
                 1,
-                new TypeReference<CardsContent<RegularIMGCard>>() {}));
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                false));
 
         model.addAttribute("aboutUsData", mainPageServices.pullCardsFromDB("B07",
                 0,
-                new TypeReference<CardsContent<RegularIMGCard>>() {}));
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                false));
 
         return "about-page";
     }
