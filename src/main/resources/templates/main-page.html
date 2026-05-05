@@ -147,129 +147,220 @@
         </form>
     </div>
 <!-- TILL HERE -->
+    <!-- ================= ENGLISH ================= -->
     <form
             th:action="@{/main-page/landing-page-section/update-bank-logos}"
             method="POST"
             th:object="${landingPageBankLogos}"
             enctype="multipart/form-data"
     >
-        <h3>Edit Bank Logos: </h3>
-        <div th:each="bankLogo, iterStat : *{cards}">
-            <span>Bank Name: </span>
-            <input
-                    type="text"
-                    th:field="*{cards[__${iterStat.index}__].name}"
-            />
+        <h3>Edit Bank Logos:</h3>
 
-            <span>Bank Link</span>
-            <input
-                    type="text"
-                    th:field="*{cards[__${iterStat.index}__].bankLink}"
-            />
-            <span>Image Upload: </span>
-            <input
-                    type="file"
-                    th:field="*{cards[__${iterStat.index}__].image.image}"
-            />
-            <input
-                type="checkbox"
-                th:field="*{cards[__${iterStat.index}__].visible}"
-            />
+        <div th:each="bankLogo, iterStat : *{cards}">
+            <span>Bank Name:</span>
+            <input type="text"
+                   th:field="*{cards[__${iterStat.index}__].name}" />
+
+            <span>Bank Link:</span>
+            <input type="text"
+                   th:field="*{cards[__${iterStat.index}__].bankLink}" />
+
+            <span>Image Upload:</span>
+            <input type="file"
+                   th:field="*{cards[__${iterStat.index}__].image.image}" />
+
+            <input type="checkbox"
+                   th:field="*{cards[__${iterStat.index}__].visible}" />
             <span>Hide Bank</span>
         </div>
+
         <button type="submit" name="action" value="add">Add New Card</button>
         <button type="submit" name="action" value="submit">Submit</button>
     </form>
 
+    <!-- ================= ARABIC ================= -->
+    <div dir="rtl" lang="ar">
 
+        <form
+                th:action="@{/main-page/landing-page-section/update-bank-logos}"
+                method="POST"
+                th:object="${landingPageBankLogosAr}"
+                enctype="multipart/form-data"
+        >
+            <h3>تعديل شعارات البنوك</h3>
 
+            <div th:each="bankLogo, iterStat : *{cards}">
+                <span>اسم البنك:</span>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].name}" />
+
+                <span>رابط البنك:</span>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].bankLink}" />
+
+                <span>رفع صورة:</span>
+                <input type="file"
+                       th:field="*{cards[__${iterStat.index}__].image.image}" />
+
+                <input type="checkbox"
+                       th:field="*{cards[__${iterStat.index}__].visible}" />
+                <span>إخفاء البنك</span>
+            </div>
+
+            <button type="submit" name="action" value="add">إضافة بطاقة</button>
+            <button type="submit" name="action" value="submit">إرسال</button>
+
+            <input type="hidden" name="lang" value="ar">
+        </form>
+
+    </div>
 </div>
+<!-- ================= ENGLISH ================= -->
 <form
         th:action="@{/main-page/about-us}"
         method="POST"
         th:object="${aboutUsSection}"
         enctype="multipart/form-data"
 >
-    <h1>Edit About Us Section: </h1>
+    <h1>Edit About Us Section</h1>
+
     <div th:each="card, itersat : *{cards}">
-        <span th:text="${card.title}">Hey, You will not appear :))</span>
+        <span th:text="${card.title}"></span>
 
-        <span>Header: </span>
-        <input
-                type="text"
-                th:field="*{cards[__${itersat.index}__].header}"
-        />
+        <span>Header:</span>
+        <input type="text"
+               th:field="*{cards[__${itersat.index}__].header}" />
 
-        <span>Description: </span>
-        <input
-                type="text"
-                th:field="*{cards[__${itersat.index}__].description}"
-        />
+        <span>Description:</span>
+        <input type="text"
+               th:field="*{cards[__${itersat.index}__].description}" />
 
-        <span>Image Upload: </span>
-        <input
-                type="file"
-                th:field="*{cards[__${itersat.index}__].image.image}"
-        />
+        <span>Image Upload:</span>
+        <input type="file"
+               th:field="*{cards[__${itersat.index}__].image.image}" />
     </div>
+
     <button type="submit" name="action" value="submit">Submit</button>
 </form>
+
+<!-- ================= ARABIC ================= -->
+<div dir="rtl" lang="ar">
+
+    <form
+            th:action="@{/main-page/about-us}"
+            method="POST"
+            th:object="${aboutUsSectionAr}"
+            enctype="multipart/form-data"
+    >
+        <h1>تعديل قسم من نحن</h1>
+
+        <div th:each="card, itersat : *{cards}">
+            <span>العنوان:</span>
+            <input type="text"
+                   th:field="*{cards[__${itersat.index}__].header}" />
+
+            <span>الوصف:</span>
+            <input type="text"
+                   th:field="*{cards[__${itersat.index}__].description}" />
+
+            <span>رفع صورة:</span>
+            <input type="file"
+                   th:field="*{cards[__${itersat.index}__].image.image}" />
+        </div>
+
+        <button type="submit" name="action" value="submit">إرسال</button>
+
+        <input type="hidden" name="lang" value="ar">
+    </form>
+
+</div>
 <div>
-<form
-        th:action="@{/main-page/service-section}"
-        method="POST"
-        th:object="${serviceSection}"
->
-    <h1>Edit Service Section: </h1>
-    <h3>Title: </h3>
-    <input type="text" name="title"
-           th:field="*{title}"
-    />
+    <!-- ================= ENGLISH ================= -->
+    <form
+            th:action="@{/main-page/service-section}"
+            method="POST"
+            th:object="${serviceSection}"
+    >
+        <h1>Edit Service Section</h1>
 
-    <h3>Header: </h3>
-    <input type="text"
-           th:field="*{header}"
-    />
+        <h3>Title:</h3>
+        <input type="text" th:field="*{title}" />
 
-    <h3>Description: </h3>
-    <input type="text" name="description"
-           th:field="*{description}"
-    />
-    <button type="submit">Submit</button>
-</form>
-<form
-        th:action="@{/main-page/service-subsection}"
-        method="POST"
-        th:object="${serviceSubSection}"
-        enctype="multipart/form-data"
->
-    <h1>Edit the Services Cards Sub Section: </h1>
-    <div th:each="card, itersat : *{cards}">
-        <h3>Header: </h3>
-        <input
-                type="text"
-                th:field="*{cards[__${itersat.index}__].header}"
-        />
-        <h3>Description: </h3>
-        <input
-                type="text"
-                th:field="*{cards[__${itersat.index}__].description}"
-        />
-        <h3>Image Upload: </h3>
-        <input
-                type="file"
-                th:field="*{cards[__${itersat.index}__].image.image}"
-        />
-        <input
-                type="checkbox"
-                th:field="*{cards[__${itersat.index}__].visible}"
-        />
-        <span>Hide Card</span>
+        <h3>Header:</h3>
+        <input type="text" th:field="*{header}" />
+
+        <h3>Description:</h3>
+        <input type="text" th:field="*{description}" />
+
+        <button type="submit">Submit</button>
+    </form>
+    <!-- ================= ENGLISH ================= -->
+    <form
+            th:action="@{/main-page/service-subsection}"
+            method="POST"
+            th:object="${serviceSubSection}"
+            enctype="multipart/form-data"
+    >
+        <h1>Edit Services Cards Sub Section</h1>
+
+        <div th:each="card, itersat : *{cards}">
+            <h3>Header:</h3>
+            <input type="text"
+                   th:field="*{cards[__${itersat.index}__].header}" />
+
+            <h3>Description:</h3>
+            <input type="text"
+                   th:field="*{cards[__${itersat.index}__].description}" />
+
+            <h3>Image Upload:</h3>
+            <input type="file"
+                   th:field="*{cards[__${itersat.index}__].image.image}" />
+
+            <input type="checkbox"
+                   th:field="*{cards[__${itersat.index}__].visible}" />
+            <span>Hide Card</span>
+        </div>
+
+        <button type="submit" name="action" value="add">Add New Card</button>
+        <button type="submit" name="action" value="submit">Submit</button>
+    </form>
+
+    <!-- ================= ARABIC ================= -->
+    <div dir="rtl" lang="ar">
+
+        <form
+                th:action="@{/main-page/service-subsection}"
+                method="POST"
+                th:object="${serviceSubSectionAr}"
+                enctype="multipart/form-data"
+        >
+            <h1>تعديل بطاقات الخدمات</h1>
+
+            <div th:each="card, itersat : *{cards}">
+                <h3>العنوان:</h3>
+                <input type="text"
+                       th:field="*{cards[__${itersat.index}__].header}" />
+
+                <h3>الوصف:</h3>
+                <input type="text"
+                       th:field="*{cards[__${itersat.index}__].description}" />
+
+                <h3>رفع صورة:</h3>
+                <input type="file"
+                       th:field="*{cards[__${itersat.index}__].image.image}" />
+
+                <input type="checkbox"
+                       th:field="*{cards[__${itersat.index}__].visible}" />
+                <span>إخفاء البطاقة</span>
+            </div>
+
+            <button type="submit" name="action" value="add">إضافة بطاقة</button>
+            <button type="submit" name="action" value="submit">إرسال</button>
+
+            <input type="hidden" name="lang" value="ar">
+        </form>
+
     </div>
-    <button type="submit" name="action" value="add">Add New Card</button>
-    <button type="submit" name="action" value="submit">Submit</button>
-
-</form>
 </div>
 <div>
     <h1>Edit Our Clients Section: </h1>
@@ -289,6 +380,7 @@
         <button type="submit">Submit</button>
     </form>
 
+    <!-- ================= ENGLISH ================= -->
     <form
             th:action="@{/main-page/update-clients}"
             method="POST"
@@ -296,31 +388,61 @@
             enctype="multipart/form-data"
     >
         <div th:each="client, iterStat : *{cards}">
-            <span>Client Name: </span>
-            <input
-                    type="text"
-                    th:field="*{cards[__${iterStat.index}__].header}"
-            />
-            <span>Clients Respond: </span>
-            <input
-                    type="text"
-                    th:field="*{cards[__${iterStat.index}__].description}"
-            />
-            <span>Image Upload: </span>
-            <input
-                    type="file"
-                    th:field="*{cards[__${iterStat.index}__].image.image}"
-            />
-            <input
-                    type="checkbox"
-                    th:field="*{cards[__${iterStat.index}__].visible}"
-            />
+            <span>Client Name:</span>
+            <input type="text"
+                   th:field="*{cards[__${iterStat.index}__].header}" />
+
+            <span>Client Response:</span>
+            <input type="text"
+                   th:field="*{cards[__${iterStat.index}__].description}" />
+
+            <span>Image Upload:</span>
+            <input type="file"
+                   th:field="*{cards[__${iterStat.index}__].image.image}" />
+
+            <input type="checkbox"
+                   th:field="*{cards[__${iterStat.index}__].visible}" />
             <span>Hide Client</span>
         </div>
+
         <button type="submit" name="action" value="add">Add New Client</button>
         <button type="submit" name="action" value="submit">Submit</button>
-
     </form>
+
+    <!-- ================= ARABIC ================= -->
+    <div dir="rtl" lang="ar">
+
+        <form
+                th:action="@{/main-page/update-clients}"
+                method="POST"
+                th:object="${clientsSectionAr}"
+                enctype="multipart/form-data"
+        >
+            <div th:each="client, iterStat : *{cards}">
+                <span>اسم العميل:</span>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].header}" />
+
+                <span>رأي العميل:</span>
+                <input type="text"
+                       th:field="*{cards[__${iterStat.index}__].description}" />
+
+                <span>رفع صورة:</span>
+                <input type="file"
+                       th:field="*{cards[__${iterStat.index}__].image.image}" />
+
+                <input type="checkbox"
+                       th:field="*{cards[__${iterStat.index}__].visible}" />
+                <span>إخفاء العميل</span>
+            </div>
+
+            <button type="submit" name="action" value="add">إضافة عميل</button>
+            <button type="submit" name="action" value="submit">إرسال</button>
+
+            <input type="hidden" name="lang" value="ar">
+        </form>
+
+    </div>
 </div>
 <div>
     <h1>Edit Contact Us Section: </h1>
@@ -340,12 +462,12 @@
         <button type="submit">Submit</button>
     </form>
 
+    <!-- ================= ENGLISH ================= -->
     <form
             th:action="@{/main-page/contact-us}"
             method="POST"
             th:object="${constactUsSubsection}"
     >
-
         <h3>Address:</h3>
         <input type="text" th:field="*{cards[0].address}" />
 
@@ -360,6 +482,33 @@
 
         <button type="submit">Submit</button>
     </form>
+
+    <!-- ================= ARABIC ================= -->
+    <div dir="rtl" lang="ar">
+
+        <form
+                th:action="@{/main-page/contact-us}"
+                method="POST"
+                th:object="${contactUsSubsectionAr}"
+        >
+            <h3>العنوان:</h3>
+            <input type="text" th:field="*{cards[0].address}" />
+
+            <h3>رقم الهاتف:</h3>
+            <input type="text" th:field="*{cards[0].phone}" />
+
+            <h3>البريد الإلكتروني:</h3>
+            <input type="text" th:field="*{cards[0].email}" />
+
+            <h3>ساعات العمل:</h3>
+            <input type="text" th:field="*{cards[0].workingHours}" />
+
+            <button type="submit">إرسال</button>
+
+            <input type="hidden" name="lang" value="ar">
+        </form>
+
+    </div>
 </div>
 </body>
 </html>
