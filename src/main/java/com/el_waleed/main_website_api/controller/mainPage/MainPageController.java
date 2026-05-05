@@ -124,6 +124,15 @@ public class MainPageController {
         return new Section();
     }
 
+    @PostMapping
+    public String processLandingPageSection(@ModelAttribute("landingPageSection") Section landingPageSection) {
+        landingPageSection.setPageId("A01");
+        landingPageSection.setId("B01");
+        landingPageSection.setUpdatedAt(new Date());
+        sectionRepository.update(landingPageSection);
+        return "success";
+    }
+
     @ModelAttribute("serviceSection")
     public Section getServiceSection() {
         return new Section();

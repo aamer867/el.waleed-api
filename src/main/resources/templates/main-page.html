@@ -30,6 +30,17 @@
         <input type="text" name="description"
                th:field="*{description}"
         />
+
+        <h3>Header Arabic: </h3>
+        <input type="text"
+               th:field="*{headerAr}"
+        />
+
+        <h3>Description Arabic: </h3>
+        <input type="text" name="description"
+               th:field="*{descriptionAr}"
+        />
+
         <button type="submit">Submit</button>
     </form>
 
@@ -52,6 +63,8 @@
 
         <button type="submit" name="action" value="add">Add New Word</button>
         <button type="submit" name="action" value="submit">Submit</button>
+
+        <input type="hidden" name="lang" value="en">
     </form>
 
     <!-- ================= WORDS (AR) ================= -->
@@ -110,6 +123,8 @@
 
         <button type="submit" name="action" value="add">Add New Card</button>
         <button type="submit" name="action" value="submit">Submit</button>
+
+        <input type="hidden" name="lang" value="en">
     </form>
 
     <!-- ================= CARDS (AR) ================= -->
@@ -146,7 +161,7 @@
             <input type="hidden" name="lang" value="ar">
         </form>
     </div>
-<!-- TILL HERE -->
+
     <!-- ================= ENGLISH ================= -->
     <form
             th:action="@{/main-page/landing-page-section/update-bank-logos}"
@@ -176,6 +191,7 @@
 
         <button type="submit" name="action" value="add">Add New Card</button>
         <button type="submit" name="action" value="submit">Submit</button>
+        <input type="hidden" name="lang" value="en">
     </form>
 
     <!-- ================= ARABIC ================= -->
@@ -227,6 +243,10 @@
     <div th:each="card, itersat : *{cards}">
         <span th:text="${card.title}"></span>
 
+        <span>Title: </span>
+        <input type="text"
+               th:field="*{cards[__${itersat.index}__].title}" />
+
         <span>Header:</span>
         <input type="text"
                th:field="*{cards[__${itersat.index}__].header}" />
@@ -242,7 +262,6 @@
 
     <button type="submit" name="action" value="submit">Submit</button>
 </form>
-
 <!-- ================= ARABIC ================= -->
 <div dir="rtl" lang="ar">
 
@@ -255,6 +274,11 @@
         <h1>تعديل قسم من نحن</h1>
 
         <div th:each="card, itersat : *{cards}">
+
+            <span>:العنوان 2 </span>
+            <input type="text"
+                   th:field="*{cards[__${itersat.index}__].title}" />
+
             <span>العنوان:</span>
             <input type="text"
                    th:field="*{cards[__${itersat.index}__].header}" />
@@ -275,7 +299,6 @@
 
 </div>
 <div>
-    <!-- ================= ENGLISH ================= -->
     <form
             th:action="@{/main-page/service-section}"
             method="POST"
@@ -291,6 +314,12 @@
 
         <h3>Description:</h3>
         <input type="text" th:field="*{description}" />
+
+        <h3>Header Arabic:</h3>
+        <input type="text" th:field="*{headerAr}" />
+
+        <h3>Description Arabic:</h3>
+        <input type="text" th:field="*{descriptionAr}" />
 
         <button type="submit">Submit</button>
     </form>
@@ -323,6 +352,8 @@
 
         <button type="submit" name="action" value="add">Add New Card</button>
         <button type="submit" name="action" value="submit">Submit</button>
+
+        <input type="hidden" name="lang" value="en">
     </form>
 
     <!-- ================= ARABIC ================= -->
@@ -369,13 +400,21 @@
             method="POST"
             th:object="${ourClientsSection}"
     >
-        <h3>Title: </h3>
+        <h3>Header: </h3>
         <input type="text" name="title"
-               th:field="*{title}"
+               th:field="*{header}"
+        />
+        <h3>Desciption: </h3>
+        <input type="text"
+               th:field="*{description}"
         />
         <h3>Header: </h3>
-        <input type="text"
+        <input type="text" name="title"
                th:field="*{header}"
+        />
+        <h3>Desciption: </h3>
+        <input type="text"
+               th:field="*{description}"
         />
         <button type="submit">Submit</button>
     </form>
@@ -407,6 +446,9 @@
 
         <button type="submit" name="action" value="add">Add New Client</button>
         <button type="submit" name="action" value="submit">Submit</button>
+
+        <input type="hidden" name="lang" value="en">
+
     </form>
 
     <!-- ================= ARABIC ================= -->
@@ -451,14 +493,23 @@
             method="POST"
             th:object="${contactUsSection}"
     >
-        <h3>Title: </h3>
-        <input type="text" name="title"
-               th:field="*{title}"
-        />
         <h3>Header: </h3>
-        <input type="text"
+        <input type="text" name="title"
                th:field="*{header}"
         />
+        <h3>Description: </h3>
+        <input type="text"
+               th:field="*{description}"
+        />
+        <h3>Header Arabic: </h3>
+        <input type="text" name="title"
+               th:field="*{headerAr}"
+        />
+        <h3>Description Arabic: </h3>
+        <input type="text"
+               th:field="*{descriptionAr}"
+        />
+
         <button type="submit">Submit</button>
     </form>
 

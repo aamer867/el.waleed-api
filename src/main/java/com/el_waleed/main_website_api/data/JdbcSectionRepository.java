@@ -1,6 +1,8 @@
 package com.el_waleed.main_website_api.data;
 
 import com.el_waleed.main_website_api.dto.Section;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -70,7 +72,7 @@ public class JdbcSectionRepository implements SectionRepository{
     @Override
     public Section update(Section section) {
         int rowsUpdatedCount = jdbcTemplate.update(
-                "UPDATE sections SET title=?, header=?, description=?, header_ar, description_ar, updated_at=? WHERE id=? AND page_id=?",
+                "UPDATE sections SET title=?, header=?, description=?, header_ar=?, description_ar=?, updated_at=? WHERE id=? AND page_id=?",
                 section.getTitle(),
                 section.getHeader(),
                 section.getDescription(),
