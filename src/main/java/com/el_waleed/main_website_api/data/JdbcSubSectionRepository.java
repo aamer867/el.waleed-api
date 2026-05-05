@@ -2,6 +2,8 @@ package com.el_waleed.main_website_api.data;
 
 import com.el_waleed.main_website_api.dto.Section;
 import com.el_waleed.main_website_api.dto.SubSection;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -39,14 +41,42 @@ public class JdbcSubSectionRepository implements SubSectionRepository{
         );
     }
 
+    private String unwrapJson(String value) {
+        if (value == null) return null;
+        String trimmed = value.trim();
+        if (trimmed.startsWith("\"")) {
+            try {
+                // Jackson will parse the outer JSON string and give back the inner value
+                return new ObjectMapper().readValue(trimmed, String.class);
+            } catch (JsonProcessingException e) {
+                // Not a valid JSON string literal — return as-is
+                return value;
+            }
+        }
+        return value;
+    }
+
     @Override
     public SubSection update(SubSection subSection) {
+
+        SubSection oldData = findById(subSection.getId(), subSection.getSectionId())
+                .orElseThrow(() -> new RuntimeException("SubSection not found"));
+
+        if (subSection.getContentJson() == null) {
+            subSection.setContentJson(unwrapJson(oldData.getContentJson()));
+        }
+
+        if (subSection.getArContentJson() == null) {
+            subSection.setArContentJson(unwrapJson(oldData.getArContentJson()));
+        }
+
         int rowsUpdated = jdbcTemplate.update(
-                "UPDATE subsections SET title=?, type=?, data=?, updated_at=?, position=? " +
+                "UPDATE subsections SET title=?, type=?, data=?, data_ar=?, updated_at=?, position=? " +
                         "WHERE id=? AND section_id=?",
                 subSection.getTitle(),
                 subSection.getType(),
-                subSection.getContentJson(), // JSON as string
+                unwrapJson(subSection.getContentJson()), // JSON as string
+                unwrapJson(subSection.getArContentJson()),
                 subSection.getUpdatedAt(),
                 subSection.getPosition(),
                 subSection.getId(),
@@ -71,6 +101,7 @@ public class JdbcSubSectionRepository implements SubSectionRepository{
         subSection.setTitle(row.getString("title"));
         subSection.setType(row.getString("type"));
         subSection.setContentJson(row.getString("data")); // or JSON handling
+        subSection.setArContentJson(row.getString("data_ar"));
         subSection.setUpdatedAt(row.getTimestamp("updated_at"));
         subSection.setPosition(row.getInt("position"));
         return subSection;

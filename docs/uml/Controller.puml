@@ -1,0 +1,33 @@
+@startuml
+
+abstract class BaseController {
+    #subSectionService: SubSectionService
+    #subSectionRepository: SubSectionRepository
+    #objectMapper: ObjectMapper
+
+    + abstract updateSection(CardsContent cardsContent, String action, SubSectionKey key): String
+    + abstract getSubSection(SubSectionKey key): SubSection
+}
+
+abstract class StringController {
+    + updateSection(CardsContent cardsContent, String action)
+}
+
+abstract class CardsIMGsController {
+    + updateSection(CardsContent cardsContent, String action)
+    # abstract getFolderName(): String
+}
+
+StringController --|> BaseController
+CardsIMGsController --|> BaseController
+
+LandingPageWordsController --|> StringController
+ContactUsController --|> StringController
+
+ClientsSecitonController --|> CardsIMGsController
+LandingPageBankLogosController --|> CardsIMGsController
+LandingPageCardsController --|> CardsIMGsController
+ServicesSectionController --|> CardsIMGsController
+AboutUsController --|> CardsIMGsController
+
+@enduml

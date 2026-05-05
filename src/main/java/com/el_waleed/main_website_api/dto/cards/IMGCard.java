@@ -1,16 +1,14 @@
-package com.el_waleed.main_website_api.dto;
+package com.el_waleed.main_website_api.dto.cards;
 
+import com.el_waleed.main_website_api.dto.ImageHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class Card {
-    private String title;
+public abstract class IMGCard extends Card{
     @JsonProperty("image_url")
     private String imageUrl;
-    private String header;
-    private String description;
     @JsonIgnore
     private ImageHandler image;
     @JsonIgnore

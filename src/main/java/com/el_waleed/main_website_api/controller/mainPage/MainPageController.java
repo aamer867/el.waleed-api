@@ -2,12 +2,10 @@ package com.el_waleed.main_website_api.controller.mainPage;
 
 import com.el_waleed.main_website_api.data.SectionRepository;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
-import com.el_waleed.main_website_api.dto.Section;
-import com.el_waleed.main_website_api.dto.SubSection;
-import com.el_waleed.main_website_api.dto.WordsContent;
+import com.el_waleed.main_website_api.dto.*;
+import com.el_waleed.main_website_api.dto.cards.*;
 import com.el_waleed.main_website_api.services.MainPageServices;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,20 +36,101 @@ public class MainPageController {
 
     @GetMapping
     public String mainPage(Model model) {
-        this.sections = this.mainPageServices.addSubsectionsToEachSection();
-        model.addAttribute("landingPageWords", mainPageServices.pullLandingPageWords(sections));
-        model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB(sections));
-        model.addAttribute("landingPageBankLogos", mainPageServices.pullBanksLogosFromDB(sections));
-        model.addAttribute("aboutUsSection", mainPageServices.pullCardsAboutUsFromDB(sections));
-        model.addAttribute("serviceSubSection", mainPageServices.pullCardsServicesFromDB(sections));
-        model.addAttribute("clientsSection", mainPageServices.pullCardsClientsFromDB(sections));
-        model.addAttribute("constactUsSubsection", mainPageServices.pullCardsContactUsFromDB(sections));
+        model.addAttribute("landingPageWords", mainPageServices.pullCardsFromDB("B01",
+                0,
+                new TypeReference<CardsContent<WordCard>>() {}, false)
+        );
+
+        model.addAttribute("landingPageCards", mainPageServices.pullCardsFromDB("B01",
+                1,
+                new TypeReference<CardsContent<RegularIMGCard>>() {}, false)
+        );
+
+        model.addAttribute("landingPageBankLogos", mainPageServices.pullCardsFromDB(
+                "B01",
+                2,
+                new TypeReference<CardsContent<BankIMGCard>>() {}, false)
+        );
+
+        model.addAttribute("aboutUsSection", mainPageServices.pullCardsFromDB(
+                "B02",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                false));
+
+        model.addAttribute("serviceSubSection", mainPageServices.pullCardsFromDB(
+                "B03",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                false));
+
+        model.addAttribute("clientsSection", mainPageServices.pullCardsFromDB(
+                "B04",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                false));
+
+        model.addAttribute("constactUsSubsection", mainPageServices.pullCardsFromDB(
+                "B05",
+                0,
+                new TypeReference<CardsContent<ContactUsCard>>() {},
+                false));
+
+        model.addAttribute("landingPageWordsAr", mainPageServices.pullCardsFromDB("B01",
+                0,
+                new TypeReference<CardsContent<WordCard>>() {}, true)
+        );
+
+        model.addAttribute("landingPageCardsAr", mainPageServices.pullCardsFromDB("B01",
+                1,
+                new TypeReference<CardsContent<RegularIMGCard>>() {}, true)
+        );
+
+        model.addAttribute("landingPageBankLogosAr", mainPageServices.pullCardsFromDB(
+                "B01",
+                2,
+                new TypeReference<CardsContent<BankIMGCard>>() {}, true)
+        );
+
+        model.addAttribute("aboutUsSectionAr", mainPageServices.pullCardsFromDB(
+                "B02",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                true));
+
+        model.addAttribute("serviceSubSectionAr", mainPageServices.pullCardsFromDB(
+                "B03",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                true));
+
+        model.addAttribute("clientsSectionAr", mainPageServices.pullCardsFromDB(
+                "B04",
+                0,
+                new TypeReference<CardsContent<RegularIMGCard>>() {},
+                true));
+
+        model.addAttribute("contactUsSubsectionAr", mainPageServices.pullCardsFromDB(
+                "B05",
+                0,
+                new TypeReference<CardsContent<ContactUsCard>>() {},
+                true));
+
         return "main-page";
     }
 
     @ModelAttribute("landingPageSection")
     public Section getLandingPage() {
         return new Section();
+    }
+
+    @PostMapping
+    public String processLandingPageSection(@ModelAttribute("landingPageSection") Section landingPageSection) {
+        landingPageSection.setPageId("A01");
+        landingPageSection.setId("B01");
+        landingPageSection.setUpdatedAt(new Date());
+        sectionRepository.update(landingPageSection);
+        return "success";
     }
 
     @ModelAttribute("serviceSection")

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 
-@Slf4j
 @Controller
 @RequestMapping("main-page/landing-page-section")
 public class LandingPageSectionController {
@@ -25,7 +24,6 @@ public class LandingPageSectionController {
 
     @PostMapping
     public String processLandingPageSection(@ModelAttribute("landingPageSection") Section landingPageSection) {
-        log.info("Processing Landing Page Section");
         landingPageSection.setPageId("A01");
         landingPageSection.setId("B01");
         landingPageSection.setUpdatedAt(new Date());

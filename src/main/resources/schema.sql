@@ -12,6 +12,10 @@ CREATE TABLE IF NOT EXISTS sections (
     title VARCHAR(40) NOT NULL,
     header VARCHAR(300),
     description VARCHAR(1000),
+    header_ar VARCHAR(300),
+    description_ar VARCHAR(1000),
+    type VARCHAR(20),
+    position INT,
     updated_at TIMESTAMP,
     PRIMARY KEY (id)
 );
@@ -22,6 +26,7 @@ CREATE TABLE IF NOT EXISTS subsections (
     title VARCHAR(40) NOT NULL,
     type VARCHAR(20),
     data JSON NOT NULL,
+    data_ar JSON,
     updated_at TIMESTAMP,
     position INT,
     PRIMARY KEY (id)

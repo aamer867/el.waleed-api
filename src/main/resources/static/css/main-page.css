@@ -1,121 +1,128 @@
-/* Global Page Style */
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
-    margin: 40px;
+    background: #f4f6f9;
+    padding: 20px;
     color: #333;
 }
 
-/* Link */
+/* ===== MAIN LAYOUT ===== */
+div, form {
+    margin-bottom: 30px;
+}
+
+/* ===== HEADINGS ===== */
+h1, h2 {
+    color: #1f2937;
+    margin-bottom: 15px;
+    border-left: 5px solid #4f46e5;
+    padding-left: 10px;
+}
+
+h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #374151;
+    font-size: 14px;
+}
+
+/* ===== FORM CONTAINERS (CARD STYLE) ===== */
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===== INPUT FIELDS ===== */
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.2s;
+}
+
+input[type="text"]:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79,70,229,0.2);
+}
+
+/* ===== CHECKBOX ===== */
+input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+
+/* ===== LABEL TEXT ===== */
+span {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* ===== BUTTONS ===== */
+button {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #3730a3;
+}
+
+/* SECONDARY BUTTON STYLE (like Add buttons) */
+button[value="add"] {
+    background: #10b981;
+}
+
+button[value="add"]:hover {
+    background: #059669;
+}
+
+/* ===== SECTION SEPARATION ===== */
+form {
+    border-left: 4px solid #e5e7eb;
+}
+
+/* ===== LINKS ===== */
 a {
     display: inline-block;
-    margin-bottom: 25px;
-    font-weight: bold;
+    margin-bottom: 20px;
+    color: #4f46e5;
     text-decoration: none;
-    color: #6a3df0;
+    font-weight: bold;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-/* Section Containers */
-div > form,
-body > form {
-    background: white;
-    padding: 25px;
-    margin-bottom: 35px;
-    border-radius: 10px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-    max-width: 900px;
-}
-
-/* Titles */
-h1 {
-    margin-top: 50px;
-    color: #2d2d2d;
-    border-left: 6px solid #6a3df0;
-    padding-left: 10px;
-}
-
-h2 {
-    color: #444;
-    margin-bottom: 15px;
-}
-
-h3 {
-    margin-top: 15px;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-/* Input fields */
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 6px 0 12px 0;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    transition: 0.2s;
-    box-sizing: border-box;
-}
-
-input[type="text"]:focus {
-    outline: none;
-    border-color: #6a3df0;
-    box-shadow: 0 0 4px rgba(106,61,240,0.3);
-}
-
-/* File input */
-input[type="file"] {
-    margin-top: 6px;
-    margin-bottom: 12px;
-}
-
-/* Checkbox alignment */
-input[type="checkbox"] {
-    margin-right: 6px;
-}
-
-/* Card / Row Blocks */
+/* ===== GROUP SPACING FOR REPEATED CARDS ===== */
 div[th\:each] {
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px dashed #e5e7eb;
     border-radius: 8px;
-    background: #fafafa;
-    border: 1px solid #eee;
+    margin-bottom: 10px;
 }
 
-/* Buttons */
-button {
-    margin-top: 10px;
-    margin-right: 10px;
-    padding: 10px 18px;
-    border-radius: 6px;
-    border: none;
-    background: #6a3df0;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-button:hover {
-    background: #532cc8;
-}
-
-/* Secondary button style (Add buttons) */
-button[value="add"] {
-    background: #16a34a;
-}
-
-button[value="add"]:hover {
-    background: #12833c;
-}
-
-/* Better spacing for spans */
-span {
-    display: inline-block;
-    margin-top: 6px;
-    font-weight: 500;
+/* ===== SMALL IMPROVEMENTS FOR READABILITY ===== */
+br {
+    display: none;
 }

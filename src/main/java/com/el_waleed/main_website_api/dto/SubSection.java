@@ -17,6 +17,7 @@ public class SubSection {
     private String title;
     private String type;
     private String contentJson;
+    private String arContentJson;
     private Integer position;
     private Date updatedAt;
 

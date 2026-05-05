@@ -17,7 +17,7 @@ INSERT INTO pages (id, title, slug) VALUES
                                         ('A05', 'Clients', 'clients_page');
 
 -- =========================
--- SECTIONS
+-- SECTIONS Main Page
 -- =========================
 INSERT INTO sections (id, page_id, title) VALUES
                                               ('B01', 'A01', 'landing_page'),
@@ -27,26 +27,74 @@ INSERT INTO sections (id, page_id, title) VALUES
                                               ('B05', 'A01', 'contact_part');
 
 -- =========================
--- subsections
+-- SECTIONS About Page
+-- =========================
+
+INSERT INTO sections (id, page_id, title) VALUES
+                                              ('B06', 'A02', 'carousel'),
+                                              ('B07', 'A02', 'about_us');
+
+INSERT INTO sections (id, page_id, title) VALUES
+                                              ('B08', 'A03', 'services_header'),
+                                              ('B09', 'A03', 'services_body');
+
+-- =========================
+-- subsections Main Page
 -- =========================
 
 -- Landing Header
-INSERT INTO subsections (id, section_id, title, type, data) VALUES
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
     ('C01','B01','header_chosen_words','WORDS',
-     '{ "words": ["Financial","Advisors","Chartered","Accountants","Tax","Experts"] }');
+     '{ "cards": [
+         { "word": "Financial" },
+         { "word": "Advisors" },
+         { "word": "Chartered" },
+         { "word": "Accountants" },
+         { "word": "Tax" },
+         { "word": "Experts" }
+     ] }',
+     '{ "cards": [
+         { "word": "مالي" },
+         { "word": "مستشارون" },
+         { "word": "معتمدون" },
+         { "word": "محاسبون" },
+         { "word": "ضرائب" },
+         { "word": "خبراء" }
+     ] }');
 
 -- Landing Cards
-INSERT INTO subsections (id, section_id, title, type, data) VALUES
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
     ('C02','B01','landing_cards','CARD',
      '{ "cards": [
          { "title": "card01", "image_url": "/sources/static/images/card01.jpg", "header": "Feasibility Study", "description": "We will conduct a feasibility study to determine the feasibility of your business." },
          { "title": "card02", "image_url": "/sources/static/images/card02.jpg", "header": "Taxes", "description": "Let us do it" }
+     ]}',
+     '{ "cards": [
+         { "title": "card01", "image_url": "/sources/static/images/card01.jpg", "header": "دراسة جدوى", "description": "سنقوم بإجراء دراسة جدوى لتحديد مدى جدوى مشروعك." },
+         { "title": "card02", "image_url": "/sources/static/images/card02.jpg", "header": "الضرائب", "description": "دعنا نقوم بذلك" }
      ]}');
 
 -- Bank Logos
-INSERT INTO subsections (id, section_id, title, type, data) VALUES
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
     ('C03','B01','bank_logos','IMG',
-     '{"banks":[
+     '{"cards":[
+       {
+         "name": "bank_misr",
+         "image_url": "/sources/static/images/bank_misr.png",
+         "link": "https://www.banquemisr.com"
+       },
+       {
+         "name": "bank_ahly",
+         "image_url": "/sources/static/images/bank_ahly.png",
+         "link": "https://www.nbe.com.eg"
+       },
+       {
+         "name": "bank_mizrahi",
+         "image_url": "/sources/static/images/bank_mizrahi.png",
+         "link": "https://www.mizrahi-tefahot.co.il"
+       }
+     ]}',
+     '{"cards":[
        {
          "name": "bank_misr",
          "image_url": "/sources/static/images/bank_misr.png",
@@ -63,8 +111,8 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
          "link": "https://www.mizrahi-tefahot.co.il"
        }
      ]}');
-
-INSERT INTO subsections (id, section_id, title, type, data) VALUES
+-- Mission Vision Values
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
     ('C04','B02','mission_vision_values','CARD',
      '{
        "cards": [
@@ -93,10 +141,38 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
            "image_url": "/resources/static/images/goals.jpg"
          }
        ]
+     }',
+     '{
+       "cards": [
+         {
+           "title": "الرؤية",
+           "header": "ابتكار، تمكين، استدامة، شمولية",
+           "description": "رؤيتنا هي أن نصبح روادًا موثوقين في مجال الاستشارات المالية.",
+           "image_url": "/resources/static/images/vision.jpg"
+         },
+         {
+           "title": "الرسالة",
+           "header": "تقديم التميز بنزاهة",
+           "description": "مهمتنا هي تقديم خدمات مهنية عالية الجودة مبنية على الثقة.",
+           "image_url": "/resources/static/images/mission.jpg"
+         },
+         {
+           "title": "القيم",
+           "header": "النزاهة، الاحترافية، الالتزام، الابتكار",
+           "description": "قيمنا توجه كل ما نقوم به وتشكل علاقتنا مع عملائنا.",
+           "image_url": "/resources/static/images/values.jpg"
+         },
+         {
+           "title": "الأهداف",
+           "header": "النمو، الجودة، شراكات طويلة الأمد",
+           "description": "تركز أهدافنا على التحسين المستمر والنمو المستدام.",
+           "image_url": "/resources/static/images/goals.jpg"
+         }
+       ]
      }');
 
 -- Services Cards
-INSERT INTO subsections (id, section_id, title, type, data) VALUES
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
     ('C08','B03','services','CARD',
      '{ "cards": [
          { "image_url": "/resources/static/images/service01.jpg", "header": "Feasibility Studies", "description": "We evaluate business ideas and projects." },
@@ -104,10 +180,17 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
          { "image_url": "/resources/static/images/service03.jpg", "header": "Financial Consulting", "description": "Tailored financial solutions." },
          { "image_url": "/resources/static/images/service04.jpg", "header": "Audit & Assurance", "description": "Independent audit services." },
          { "image_url": "/resources/static/images/service05.jpg", "header": "Business Advisory", "description": "Support business transformation." }
+     ]}',
+     '{ "cards": [
+         { "image_url": "/resources/static/images/service01.jpg", "header": "دراسات الجدوى", "description": "نقوم بتقييم أفكار ومشاريع الأعمال." },
+         { "image_url": "/resources/static/images/service02.jpg", "header": "استشارات ضريبية", "description": "تخطيط ضريبي استراتيجي وخدمات الامتثال." },
+         { "image_url": "/resources/static/images/service03.jpg", "header": "استشارات مالية", "description": "حلول مالية مخصصة." },
+         { "image_url": "/resources/static/images/service04.jpg", "header": "التدقيق والضمان", "description": "خدمات تدقيق مستقلة." },
+         { "image_url": "/resources/static/images/service05.jpg", "header": "استشارات الأعمال", "description": "دعم تحول الأعمال." }
      ]}');
 
 -- Clients Cards
-INSERT INTO subsections (id, section_id, title, type, data) VALUES
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
     ('C09','B04','clients','CARD',
      '{ "cards": [
          { "image_url": "/resources/static/images/client01.jpg", "header": "Corporate Clients", "description": "Strategic advisory services." },
@@ -115,10 +198,147 @@ INSERT INTO subsections (id, section_id, title, type, data) VALUES
          { "image_url": "/resources/static/images/client03.jpg", "header": "Startups", "description": "From idea to execution." },
          { "image_url": "/resources/static/images/client04.jpg", "header": "Non-Profit Organizations", "description": "Governance and compliance." },
          { "image_url": "/resources/static/images/client05.jpg", "header": "International Clients", "description": "Cross-border advisory." }
+     ]}',
+     '{ "cards": [
+         { "image_url": "/resources/static/images/client01.jpg", "header": "شركات", "description": "خدمات استشارية استراتيجية." },
+         { "image_url": "/resources/static/images/client02.jpg", "header": "الشركات الصغيرة والمتوسطة", "description": "حلول فعالة من حيث التكلفة." },
+         { "image_url": "/resources/static/images/client03.jpg", "header": "الشركات الناشئة", "description": "من الفكرة إلى التنفيذ." },
+         { "image_url": "/resources/static/images/client04.jpg", "header": "المنظمات غير الربحية", "description": "الحوكمة والامتثال." },
+         { "image_url": "/resources/static/images/client05.jpg", "header": "عملاء دوليون", "description": "استشارات عبر الحدود." }
      ]}');
 
 -- Contact Info
-    INSERT INTO subsections (id, section_id, title, type, data) VALUES
-        ('C10','B05','contact_info','INFO',
-         '{ "email": "info@yourcompany.com", "address": "123 Business Street, Downtown, Cairo, Egypt", "opening_hours": "Sunday – Thursday, 9:00 AM – 5:00 PM", "phone": "+1234567890" }');
-    -- SET FOREIGN_KEY_CHECKS=1;
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
+    ('C10','B05','contact_info','INFO',
+     '{ "cards": [
+         {
+             "email": "info@yourcompany.com",
+             "address": "123 Business Street, Downtown, Cairo, Egypt",
+             "opening_hours": "Sunday – Thursday, 9:00 AM – 5:00 PM",
+             "phone": "+1234567890"
+         }
+     ] }',
+     '{ "cards": [
+         {
+             "email": "info@yourcompany.com",
+             "address": "123 شارع الأعمال، وسط البلد، القاهرة، مصر",
+             "opening_hours": "الأحد - الخميس، 9:00 صباحًا - 5:00 مساءً",
+             "phone": "+1234567890"
+         }
+     ] }');
+
+
+-- =========================
+-- subsections About Page
+-- =========================
+
+-- Carousel Text
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
+    ('C11','B06','carousel_text','TEXT',
+     '{ "cards": [
+         { "word": "We are a leading advisory firm specializing in tax planning and compliance." }
+     ]}',
+     '{ "cards": [
+         { "word": "نحن شركة استشارات رائدة متخصصة في التخطيط الضريبي والامتثال." }
+     ]}');
+
+-- Carousel Images (no translation needed)
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
+    ('C12', 'B06', 'carousel_images', 'IMG',
+     '{ "cards": [
+         { "image_url": "/resources/static/images/mission.jpg" },
+         { "image_url": "/resources/static/images/vision.jpg" },
+         { "image_url": "/resources/static/images/values.jpg" },
+         { "image_url": "/resources/static/images/goals.jpg" }
+     ]}',
+     '{ "cards": [
+         { "image_url": "/resources/static/images/mission.jpg" },
+         { "image_url": "/resources/static/images/vision.jpg" },
+         { "image_url": "/resources/static/images/values.jpg" },
+         { "image_url": "/resources/static/images/goals.jpg" }
+     ]}');
+
+-- About Us Data
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
+    ('C13', 'B07', 'about_us_data', 'IMG',
+     '{ "cards": [
+         {
+             "image_url": "/resources/static/images/mission.jpg",
+             "header": "Our Mission",
+             "description": "To deliver meaningful solutions that create value and impact for our clients and society."
+         },
+         {
+             "image_url": "/resources/static/images/vision.jpg",
+             "header": "Our Vision",
+             "description": "To be a trusted leader recognized for innovation, excellence, and long-term impact."
+         },
+         {
+             "image_url": "/resources/static/images/values.jpg",
+             "header": "Our Values",
+             "description": "Integrity, quality, and commitment guide every decision we make."
+         },
+         {
+             "image_url": "/resources/static/images/goals.jpg",
+             "header": "Our Goals",
+             "description": "To grow sustainably, innovate continuously, and expand our positive impact."
+         }
+     ]}',
+     '{ "cards": [
+         {
+             "image_url": "/resources/static/images/mission.jpg",
+             "header": "مهمتنا",
+             "description": "تقديم حلول فعالة تخلق قيمة وتأثيرًا لعملائنا والمجتمع."
+         },
+         {
+             "image_url": "/resources/static/images/vision.jpg",
+             "header": "رؤيتنا",
+             "description": "أن نكون روادًا موثوقين معروفين بالابتكار والتميز والتأثير طويل الأمد."
+         },
+         {
+             "image_url": "/resources/static/images/values.jpg",
+             "header": "قيمنا",
+             "description": "النزاهة والجودة والالتزام توجه كل قرار نتخذه."
+         },
+         {
+             "image_url": "/resources/static/images/goals.jpg",
+             "header": "أهدافنا",
+             "description": "النمو المستدام والابتكار المستمر وتوسيع تأثيرنا الإيجابي."
+         }
+     ]}');
+
+-- =========================
+-- subsections Services Page
+-- =========================
+
+-- Services Header
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
+    ('C14', 'B08', 'services_header', 'TEXT',
+     '{ "cards": [
+         { "word": "Our Services" },
+         { "word": "We are a leading advisory firm specializing in tax planning and compliance." }
+     ]}',
+     '{ "cards": [
+         { "word": "خدماتنا" },
+         { "word": "نحن شركة استشارات رائدة متخصصة في التخطيط الضريبي والامتثال." }
+     ]}');
+
+-- Services Body
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
+    ('C15', 'B09', 'services_body', 'CARD',
+     '{
+       "cards": [
+         { "title": "card01", "image_url": "/resources/static/images/service01.jpg", "header": "Feasibility Studies", "description": "We evaluate business ideas and projects." },
+         { "title": "card02", "image_url": "/resources/static/images/service02.jpg", "header": "Tax Advisory", "description": "Strategic tax planning and compliance services." },
+         { "title": "card03", "image_url": "/resources/static/images/service03.jpg", "header": "Financial Consulting", "description": "Tailored financial solutions." },
+         { "title": "card04", "image_url": "/resources/static/images/service04.jpg", "header": "Audit & Assurance", "description": "Independent audit services." }
+       ]
+     }',
+     '{
+       "cards": [
+         { "title": "card01", "image_url": "/resources/static/images/service01.jpg", "header": "دراسات الجدوى", "description": "نقوم بتقييم أفكار ومشاريع الأعمال." },
+         { "title": "card02", "image_url": "/resources/static/images/service02.jpg", "header": "استشارات ضريبية", "description": "تخطيط ضريبي استراتيجي وخدمات الامتثال." },
+         { "title": "card03", "image_url": "/resources/static/images/service03.jpg", "header": "استشارات مالية", "description": "حلول مالية مخصصة." },
+         { "title": "card04", "image_url": "/resources/static/images/service04.jpg", "header": "التدقيق والضمان", "description": "خدمات تدقيق مستقلة." }
+       ]
+     }');
+-- SET FOREIGN_KEY_CHECKS=1;
