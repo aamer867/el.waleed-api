@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS pages (
 CREATE TABLE IF NOT EXISTS sections (
     id VARCHAR(10) NOT NULL,
     page_id VARCHAR(4) NOT NULL,
-    title VARCHAR(40) NOT NULL,
+    title VARCHAR(40),
     header VARCHAR(300),
     description VARCHAR(1000),
     header_ar VARCHAR(300),
@@ -23,9 +23,9 @@ CREATE TABLE IF NOT EXISTS sections (
 CREATE TABLE IF NOT EXISTS subsections (
     id VARCHAR(4) NOT NULL,
     section_id VARCHAR(10) NOT NULL,
-    title VARCHAR(40) NOT NULL,
+    title VARCHAR(40),
     type VARCHAR(20),
-    data JSON NOT NULL,
+    data JSON,
     data_ar JSON,
     updated_at TIMESTAMP,
     position INT,

@@ -69,8 +69,8 @@ public class MainPageServices {
         CardsContent<T> cardsContent = new CardsContent<>();
 
         try {
-            String cleanJson = mapper.readValue(cards, String.class);
-            return mapper.readValue(cleanJson, typeReference);
+            //String cleanJson = mapper.readValue(cards, String.class);
+            return mapper.readValue(cards, typeReference);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
