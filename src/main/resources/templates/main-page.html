@@ -261,6 +261,7 @@
     </div>
 
     <button type="submit" name="action" value="submit">Submit</button>
+    <input type="hidden" name="lang" value="en">
 </form>
 <!-- ================= ARABIC ================= -->
 <div dir="rtl" lang="ar">
@@ -408,13 +409,13 @@
         <input type="text"
                th:field="*{description}"
         />
-        <h3>Header: </h3>
+        <h3>Header Arabis: </h3>
         <input type="text" name="title"
-               th:field="*{header}"
+               th:field="*{headerAr}"
         />
-        <h3>Desciption: </h3>
+        <h3>Desciption Arabic: </h3>
         <input type="text"
-               th:field="*{description}"
+               th:field="*{descriptionAr}"
         />
         <button type="submit">Submit</button>
     </form>
@@ -532,6 +533,8 @@
         <input type="text" th:field="*{cards[0].workingHours}" />
 
         <button type="submit">Submit</button>
+        <input type="hidden" name="lang" value="en">
+
     </form>
 
     <!-- ================= ARABIC ================= -->
