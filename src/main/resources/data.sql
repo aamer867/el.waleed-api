@@ -24,7 +24,8 @@ INSERT INTO sections (id, page_id, title) VALUES
                                               ('B02', 'A01', 'mission_vision_values'),
                                               ('B03', 'A01', 'services_part'),
                                               ('B04', 'A01', 'clients_part'),
-                                              ('B05', 'A01', 'contact_part');
+                                              ('B05', 'A01', 'contact_part'),
+                                              ('B10', 'A01', 'footer');
 
 -- =========================
 -- SECTIONS About Page
@@ -341,4 +342,37 @@ INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
          { "title": "card04", "image_url": "/resources/static/images/service04.jpg", "header": "التدقيق والضمان", "description": "خدمات تدقيق مستقلة." }
        ]
      }');
+
+-- Header, and Footer:
+INSERT INTO subsections (id, section_id, title, type, data, data_ar) VALUES
+    (
+        'C16',
+        'B10',
+        'header_footer',
+        'CARD',
+
+        '{
+          "cards": [
+            {
+              "image_url": "/resources/static/images/logo.png",
+              "faceBookLink": "https://facebook.com/elwaleed",
+              "instagramLink": "https://instagram.com/elwaleed",
+              "xLink": "https://x.com/elwaleed",
+              "linkedInLink": "https://linkedin.com/company/elwaleed"
+            }
+          ]
+        }',
+
+        '{
+          "cards": [
+            {
+              "image_url": "/resources/static/images/logo.png",
+              "faceBookLink": "https://facebook.com/elwaleed",
+              "instagramLink": "https://instagram.com/elwaleed",
+              "xLink": "https://x.com/elwaleed",
+              "linkedInLink": "https://linkedin.com/company/elwaleed"
+            }
+          ]
+        }'
+    );
 -- SET FOREIGN_KEY_CHECKS=1;

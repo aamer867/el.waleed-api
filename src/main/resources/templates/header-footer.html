@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Header Footer Editor</title>
+</head>
+<body>
+
+<a href="home">Main Home Editor</a>
+<link rel="stylesheet" th:href="@{/css/main-page.css}">
+<br>
+
+<form
+        method="POST"
+        th:object="${headerFooter}"
+        th:action="@{/header-footer/editor}"
+        enctype="multipart/form-data"
+>
+    <h1>Edit Header and Footer</h1>
+    <h3>FaceBook Link: </h3>
+    <input type="text" th:field="*{cards[0].faceBookLink}" />
+    <h3>Instegram Link: </h3>
+    <input type="text" th:field="*{cards[0].instagramLink}" />
+    <h3>Twitter Link: </h3>
+    <input type="text" th:field="*{cards[0].xLink}" />
+    <h3>Linkedin Link: </h3>
+    <input type="text" th:field="*{cards[0].linkedInLink}" />
+    <h3>Edit the Logo</h3>
+    <input type="file" th:field="*{cards[0].image.image}" />
+    <button type="submit">Save</button>
+    <input type="hidden" name="lang" value="en">
+</form>
+
+</body>
+</html>
