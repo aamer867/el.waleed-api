@@ -36,6 +36,13 @@ class ContactUsCard {
     - String phone;
 }
 
+class HeaderFooterCard {
+    - String faceBookLink;
+    - String XLink;
+    - String linkedInLink;
+    - String instagramLink;
+}
+
 ' ===== Content Containers =====
 class CardsContent {
     List<Card> cards;
@@ -61,12 +68,18 @@ class ContanctUsContent {
     setCards();
 }
 
+class HeaderFooterCardsContent {
+    getCards();
+    setCards();
+}
+
 ' ===== Inheritance Relationships =====
 IMGCard --|> Card
 StringCard --|> Card
 
 RegularIMGCard --|> IMGCard
 BankIMGCard --|> IMGCard
+HeaderFooterCard --|> IMGCard
 
 WordCard --|> StringCard
 ContactUsCard --|> StringCard
@@ -75,6 +88,7 @@ BankCardsContent --|> CardsContent
 RegularCardsContent --|> CardsContent
 WordCardsContent --|> CardsContent
 ContanctUsContent --|> CardsContent
+HeaderFooterCardsContent --|> CardsContent
 
 ' ===== Composition Relationships =====
 CardsContent *-- Card
@@ -83,5 +97,5 @@ RegularCardsContent *-- RegularIMGCard
 BankCardsContent *-- BankIMGCard
 WordCardsContent *-- WordCard
 ContanctUsContent *-- ContactUsCard
-
+HeaderFooterCardsContent *-- HeaderFooterCard
 @enduml
