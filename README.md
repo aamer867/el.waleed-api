@@ -32,10 +32,9 @@ src/
  ├── controller/
  ├── service/
  ├── repository/
- ├── model/
  ├── dto/
  └── config/
-
+´´´
 # Important Note
 
 This project was developed as a custom backend solution for a client and was deployed only after the customer's agreement and approval.
