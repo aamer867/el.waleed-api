@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/headerFooter")
+@RequestMapping("/header-footer")
 public class HeaderFooterController {
     private MainPageServices mainPageServices;
 

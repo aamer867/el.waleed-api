@@ -3,6 +3,8 @@ package com.el_waleed.main_website_api.controller.headerFooter;
 import com.el_waleed.main_website_api.controller.CardsIMGsController;
 import com.el_waleed.main_website_api.data.SubSectionRepository;
 import com.el_waleed.main_website_api.dto.SubSection;
+import com.el_waleed.main_website_api.dto.cards.HeaderFooterCard;
+import com.el_waleed.main_website_api.dto.cards.HeaderFooterCardsContent;
 import com.el_waleed.main_website_api.dto.cards.RegularCardsContent;
 import com.el_waleed.main_website_api.dto.cards.RegularIMGCard;
 import com.el_waleed.main_website_api.services.SubSectionService;
@@ -41,10 +43,10 @@ public class HeaderFooterEditorController extends CardsIMGsController {
     }
 
     @PostMapping
-    public String updateHeaderFooter(RegularCardsContent cardsContent,
-                                               @RequestParam(name = "action", required = false) String action,
-                                               @RequestParam(name = "lang", required = false) String lang)
+    public String updateHeaderFooter(HeaderFooterCardsContent cardsContent,
+                                     @RequestParam(name = "action", required = false) String action,
+                                     @RequestParam(name = "lang", required = false) String lang)
             throws JsonProcessingException {
-        return super.updateSection(cardsContent, "nO_action_provided", RegularIMGCard::new, "header-footer", lang);
+        return super.updateSection(cardsContent, "nO_action_provided", HeaderFooterCard::new, "header-footer", lang);
     }
 }

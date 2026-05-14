@@ -1,5 +1,7 @@
 package com.el_waleed.main_website_api.dto.cards;
 
+import lombok.Data;
+
 import java.util.List;
 
 public class HeaderFooterCardsContent extends CardsContent<HeaderFooterCard> {
