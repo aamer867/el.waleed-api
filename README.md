@@ -25,6 +25,12 @@ A custom backend management system built with Spring Boot to manage and deliver 
 - Maven
 - REST APIs
 
+# Important Note
+
+This project was developed as a custom backend solution for a client and was deployed only after the customer's agreement and approval.
+
+The complete source code, backend architecture, implementation logic, and deployment structure are fully owned by the developer. I retain full rights to the project, including the right to reuse, modify, maintain, and further develop the codebase.
+
 ## Project Structure
 
 ```bash
@@ -35,8 +41,4 @@ src/
  ├── dto/
  └── config/
 ´´´
-# Important Note
 
-This project was developed as a custom backend solution for a client and was deployed only after the customer's agreement and approval.
-
-The complete source code, backend architecture, implementation logic, and deployment structure are fully owned by the developer. I retain full rights to the project, including the right to reuse, modify, maintain, and further develop the codebase.
